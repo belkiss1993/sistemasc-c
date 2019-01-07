@@ -1,10 +1,8 @@
-
 <template>
-  <div>
-
-    <dataTable :dataSource="servicios" :excludedColumns="['tipoServicioId']" />
-    
-  </div>
+    <dataTable 
+        :dataSource="servicios" 
+        :excludedColumns="['tipoServicioId']"
+        searchTerm="nombre" />
 </template>
 
 <script>

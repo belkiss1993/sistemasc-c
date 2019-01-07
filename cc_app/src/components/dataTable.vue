@@ -3,7 +3,7 @@
         <form id="searchForm">
             <div class="form-row">
                 <div class="col-md-5">
-                    <input class="form-control" type="text" id="Buscar">
+                    <input class="form-control" type="text" id="Buscar" v-model="wordToSearch">
                 </div>
                 <div class="col-md-4">
                     <button class="btn btn-outline-success" type="submit">Search</button>
@@ -32,11 +32,12 @@
 <script>
 export default {
     name: 'dataTable',
-    props: ['dataSource', 'excludedColumns'],
+    props: ['dataSource', 'excludedColumns', 'searchTerm'],
 
     data(){
         return {
-            activeFilter: ''
+            wordToSearch: '',
+            matchedData: []
         }
     },
 
@@ -68,8 +69,10 @@ export default {
             if(!this.validValue(this.dataSource))
                 return []
 
-            if (this.activeFilter === '')
+            if (this.matchedData.length === 0)
                 return this.dataSource
+            
+            return this.matchedData
         },
 
         visibleColumns(){
@@ -77,6 +80,24 @@ export default {
                 return this.columns
             
             return this.columns.filter(col => !this.excludedColumns.includes(col))
+        }
+    },
+
+    watch:{
+        wordToSearch: function(value){
+            if(!this.validValue(value)){
+                this.matchedData = []
+                return
+            }
+
+            if(!this.validValue(this.searchTerm)){
+                this.matchedData = []
+                return
+            }
+            
+            this.matchedData = this.dataSource.filter(item => 
+                item[this.searchTerm].toLowerCase().includes(value.toLowerCase())
+            )
         }
     },
 

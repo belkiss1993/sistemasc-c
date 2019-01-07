@@ -1,6 +1,10 @@
 <template>
     <div>
-        <dataTable :dataSource="productos" :excludedColumns="['id', 'tipoProductoId', 'tipoSegmentoId']"></dataTable>
+        <dataTable 
+            :dataSource="productos" 
+            :excludedColumns="['id', 'tipoProductoId', 'tipoSegmentoId']"
+            searchTerm="modelo">
+        </dataTable>
     </div>
 </template>
 
