@@ -12,8 +12,10 @@
 </template>
 
 <script>
-import adminnav from '@/components/NavAdmin'
-import usuarionav from '@/components/NavUsuarios'
+
+const adminnav= () => import('@/components/NavAdmin')
+const usuarionav= () => import('@/components/NavUsuarios')
+
 
 export default {
   name: 'App',

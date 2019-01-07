@@ -9,9 +9,9 @@ router.get('/', async function(req, res){
     try {
         const qryServicios= `
         select s.nombre, 
-        s.descripcion, 
+        s.descripcion as descripción_servicio, 
         s.tipoServicioId,
-        ts.descripcion
+        ts.descripcion as descripción_tiposervicio
         from servicios s
         inner join tipo_servicios ts
         on ts.id = s.tipoServicioId
