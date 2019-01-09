@@ -17,7 +17,7 @@
           Productos
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Crear Productos</a>
+          <router-link class="dropdown-item" to="/adm/createproducts">Crear Productos</router-link>
           <router-link class="dropdown-item" to="/adm/products">Ver lista productos</router-link>
             
           <div class="dropdown-divider"></div>

@@ -7,7 +7,8 @@ const Login  = ()=> import('./views/user/Login.vue')
 const Registro = ()=> import('./views/user/Registro.vue')
 const Productos = ()=> import('./views/products/Product.vue')
 const Productosadm = ()=> import('./views/products/Productadm.vue')
-const Servicesadm= ()=> import('./views/services/Servicesadm.vue')
+const Servicesadm = ()=> import('./views/services/Servicesadm.vue')
+const CreateProductsadm = ()=> import('./views/products/CreateProductsadm.vue')
 
 Vue.use(Router)
 
@@ -48,6 +49,11 @@ export default new Router({
       path:'/adm/services',
      name:'servicesadm',
      component: Servicesadm
+    },
+    {
+      path:'/adm/createproducts',
+      name:'createproductsadm',
+      component: CreateProductsadm
     }
   ]
 })
