@@ -25,8 +25,7 @@ router.get('/', async function(req, res){
         console.log(error)
         res.status(500).json({exitoso: false})
     }
-    }) 
-    
+})   
 
 router.post('/eliminar', async function(req, res){
 
@@ -53,7 +52,6 @@ router.post('/eliminar', async function(req, res){
     res.status(500).json({exitoso: false})
 }
 })
-
 
 // crear SERVICIOS
 router.post('/crear_servicio', async function(req, res){
@@ -83,7 +81,21 @@ router.post('/crear_servicio', async function(req, res){
         res.status(500).json({exitoso: false})
     }
 })
+    
+router.get('/tipo-servicios', async function(req, res){
+    try {
+        const querytipo_servicios =
+        'select id , descripcion from tipo_servicios'
 
+        const tipo_servicios = await sqlQuery(querytipo_servicios)
+
+        res.status(200).json({exitoso: true, tipo_servicios})
+
+    } catch (error) {
+        console.log(error)
+        res.status(500).json({exitoso: false})
+   }
+})
 
 router.get('/:id', async function(req, res){
 
@@ -113,8 +125,7 @@ router.get('/:id', async function(req, res){
          console.log(error)
         res.status(500).json({exitoso: false})
     }   
-    })
+})
 
 
-
-    module.exports = router
+module.exports = router

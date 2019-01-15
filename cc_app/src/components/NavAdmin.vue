@@ -31,7 +31,7 @@
           Servicios
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Crear Servicios</a>
+          <router-link class="dropdown-item" to="/adm/createservices">Crear Servicios</router-link>
           <router-link class="dropdown-item" to="/adm/services">Ver lista de Servicios</router-link>
             
           <div class="dropdown-divider"></div>

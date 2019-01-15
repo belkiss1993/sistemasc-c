@@ -3,6 +3,21 @@ const router = express.Router()
 const {sqlQuery} = require('../config/general')
 
 
+router.get('/tipo_producto', async function(req, res){
+    try {
+        const querytipo_producto=
+        'select id , descripcion from tipo_producto'
+
+        const tipo_producto = await sqlQuery(querytipo_producto)
+
+        res.status(200).json({exitoso: true, tipo_producto})
+    } catch (error) {
+        console.log(error)
+       res.status(500).json({exitoso: false})
+   }
+})
+
+
 router.post('/eliminar', async function(req, res){
 
     const id = req.body.id
@@ -68,12 +83,12 @@ router.post('/crear_producto', async function(req, res){
     try {
         const nombre= req.body.nombre
         const modelo= req.body.modelo
-        const tipoProducto=req.body.tipoproducto
+        const tipoProducto=req.body.tipoProductoId
         const descripcion=req.body.descripcion
         const segmentoId=req.body.segmentoId
 
         const qryCrearProducto=`
-        insert into productos(nombre,Modelo,tipoProductoId,descripcion,segmentoid)
+        insert into productos(nombre,Modelo,tipoProductoId,descripcion,tipoSegmentoId)
         values (:nombre,:modelo,:tipoProducto,:descripcion,:segmentoId)`
 
        const params={ nombre,modelo,tipoProducto,descripcion,segmentoId}
@@ -117,7 +132,19 @@ router.get('/crear_tipo_producto', async function(req, res){
 })
 
 
+router.get('/tipo_segmentos', async function(req, res){
+    try {
+        const querytipo_segmentos=
+        'select id , descripcion from tipo_segmentos'
 
+        const tipo_segmentos = await sqlQuery(querytipo_segmentos)
+
+        res.status(200).json({exitoso: true, tipo_segmentos})
+    } catch (error) {
+        console.log(error)
+       res.status(500).json({exitoso: false})
+   }
+})
 
 // CREAR TIPOS DE SEGMENTO Empresas
 router.get('/crear_segmento', async function(req, res){
