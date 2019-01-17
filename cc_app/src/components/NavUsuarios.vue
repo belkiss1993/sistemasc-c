@@ -16,9 +16,9 @@
                 </li>
                         
                 <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Productos
-                </a>
+                <router-link class="nav-link dropdown-toggle" to="products" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Productos
+                </router-link>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                     <router-link class="dropdown-item" to="/">Profesional</router-link>
                     <a class="dropdown-item" href="#">Empresa</a>
@@ -49,8 +49,11 @@
                 </li>
                 
                 <li>
-                <router-link class="nav-link" to="/about">About</router-link>
+                <router-link class="nav-link" to="/contact">Contacto</router-link>
                 </li>
+                <div> 
+                 <p class="text-rigth">PBX: (+504) 2239 3800.</p>
+                </div>  
             </ul>  
         </div>            
         </nav>

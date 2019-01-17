@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 
 import Home from './views/Home.vue'
-const About = ()=> import('./views/About.vue')
+const About = ()=> import('./views/contact.vue')
 const Login  = ()=> import('./views/user/Login.vue')
 const Registro = ()=> import('./views/user/Registro.vue')
 const Productos = ()=> import('./views/products/Product.vue')
@@ -20,8 +20,8 @@ export default new Router({
       component: Home
     },
     {
-      path: '/about',
-      name: 'about',
+      path: '/contact',
+      name: 'contact',
       component: About
     },
     {

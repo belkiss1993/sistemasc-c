@@ -5,12 +5,12 @@
   
     <div class="form-group col-md-4">
        <label for="inputEmail4">Nombre</label>
-      <input v-model="NuevoUsuario.nombre" type="text" class="form-control" placeholder="First name">
+      <input v-model="NuevoUsuario.nombre" type="text" class="form-control" placeholder="Nombre">
     </div>
 
     <div class="form-group col-md-4">
        <label for="inputEmail4">Apellido</label>
-      <input v-model="NuevoUsuario.apellido" type="text" class="form-control" placeholder="Last name">
+      <input v-model="NuevoUsuario.apellido" type="text" class="form-control" placeholder="Apellido">
     </div>
   </div>
 
@@ -38,9 +38,9 @@
 
     <div class="form-group col-md-4">
       <label for="inputPassword4">Contraseña</label>
-      <input v-model="NuevoUsuario.password" type="password" class="form-control" id="inputPassword4" placeholder="Password">
+      <input v-model="NuevoUsuario.password" type="password" class="form-control" id="inputPassword4" placeholder="Contraseña">
       <small id="passwordHelpInline" class="text-muted">
-      Mas de 6 characters long.
+      Mas de 6 caracteres.
       </small>
     </div>
   </div>
@@ -49,7 +49,7 @@
   
   <div class="form-group col-md-6">
        <label for="inputMobile">Celular/Telefono</label>
-      <input v-model="NuevoUsuario.telefono" type="text" class="form-control" placeholder="Mobile">
+      <input v-model="NuevoUsuario.telefono" type="text" class="form-control" placeholder="Telefono">
     </div>
   </div>
 
@@ -93,7 +93,7 @@
     </div>
   </div>
   
-  <button @click.prevent="guardarUsuario" type="submit" class="btn btn-primary">Sign in</button>
+  <button @click.prevent="guardarUsuario" type="submit" class="btn btn-primary">Registrarse</button>
 
   
   

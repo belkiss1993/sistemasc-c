@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const {sqlQuery} = require('../config/general')
+const {sqlQuery, valorValido} = require('../config/general')
 
 
 router.get('/tipo_producto', async function(req, res){
@@ -64,7 +64,8 @@ try {
         and tp.fecha_eliminado is null
     inner join tipo_segmentos ts 
             on ts.id=p.tipoSegmentoId 
-        and ts.fecha_eliminado is null`
+        and ts.fecha_eliminado is null
+    where p.fecha_eliminado is null`
 
     const resultados = await sqlQuery(qryProducto)
 

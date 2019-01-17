@@ -74,11 +74,13 @@ export default {
       tipoSegmentoSeleccionado: "",
       Nuevoproducto: {},
       error_msj: ""
+      
     };
   },
   created() {
     this.obtenerTipoProductos();
     this.obtenerTipoSegmentos();
+
   },
   methods: {
     obtenerTipoProductos() {

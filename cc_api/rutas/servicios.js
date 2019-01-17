@@ -8,14 +8,17 @@ router.get('/', async function(req, res){
     // buscar todos los servicios en la base de datos
     try {
         const qryServicios= `
-        select s.nombre, 
-        s.descripcion as descripción_servicio, 
-        s.tipoServicioId,
-        ts.descripcion as descripción_tiposervicio
+        select 
+            s.id,
+            s.nombre, 
+            s.descripcion as descripción_servicio, 
+            s.tipoServicioId,
+            ts.descripcion as descripción_tiposervicio
         from servicios s
-        inner join tipo_servicios ts
-        on ts.id = s.tipoServicioId
-       and ts.fecha_eliminado is null`
+            inner join tipo_servicios ts
+                    on ts.id = s.tipoServicioId
+                   and ts.fecha_eliminado is null
+        where s.fecha_eliminado is null`
     
         const resultados = await sqlQuery(qryServicios)
     
@@ -30,6 +33,8 @@ router.get('/', async function(req, res){
 router.post('/eliminar', async function(req, res){
 
     const id = req.body.id
+
+    console.log(id)
 
     if(!valorValido(id)){
         return res.status(400).json({exitoso: false, error: 'id no valido'})

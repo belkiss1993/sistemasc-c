@@ -31,14 +31,13 @@
     </div>
     <div class="col-md-4">
        <center>
-     <p>
-        <img src="../img/oportunidad.png" width="150" height="150" align="middle" alt=""/>
-      </p>
+     <!-- <p>
+        <img src="" width="150" height="150" align="middle" alt=""/>
+      </p> -->
     </center>
-      <h3 class="text-center">Oportunidades</h3>
+      <h3 class="text-center">informacion</h3>
       <br>
-      En Sistemas C&C, creemos que pueden existir oportunidades en diferentes sectores, oportunidades para personas y negocios, y que ambos pueden crecer juntamente, nosotros creemos que podemos ayudar.
-   
+    Contactos, ubicacion
    
     </div>
   </div>

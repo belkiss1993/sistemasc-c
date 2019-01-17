@@ -28,22 +28,24 @@
                     {{error}}
                 </div>
 
-                <div class="form-check">
+                <!-- <div class="form-check">
                   <input type="checkbox" class="form-check-input" id="dropdownCheck">
                      <label class="form-check-label" for="dropdownCheck">
                       Remember me
                      </label>
-               </div>
+               </div> -->
 
                 <div class="form-group">
                     <button type="button" @click.prevent="verifyAccount" class="btn btn-primary">Entrar</button>
                 </div>
             </form>
             <div class="dropdown-divider"></div>
-  <a class="dropdown-item" href="#">New around here? Sign up</a>
-  <a class="dropdown-item" href="#">Forgot password?</a>
+             <a class="dropdown-item" href="#">
+                    ¿Nuevo por aquí? Regístrate</a>
+              <a class="dropdown-item" href="#">
+                    ¿Se te olvidó tu contraseña?</a>
 
-        </div>
+             </div>
         
         <div class="col-md-2">
         </div>

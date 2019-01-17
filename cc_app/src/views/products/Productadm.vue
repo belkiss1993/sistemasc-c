@@ -3,7 +3,12 @@
         <dataTable 
             :dataSource="productos" 
             :excludedColumns="['id', 'tipoProductoId', 'tipoSegmentoId']"
+            :extraColumns="['Acciones']"
             searchTerm="modelo">
+            
+            <template slot-scope="data" slot="Acciones">
+                <a href="#" class="btn btn-danger" @click.prevent="eliminarProducto(data.row.id)">Eliminar</a>
+            </template>
         </dataTable>
     </div>
 </template>
@@ -34,6 +39,19 @@ export default {
             }).catch(error=>{
                 console.log(error)
             })
+        },
+
+        eliminarProducto(id){
+        const continuar = confirm("¿Desea eliminar?")
+        if(!continuar){
+            return
+        }
+        axios.post("http://localhost:3000/productos/eliminar",{id}).then(response=>{
+            this.obtenerproductos()
+
+        }).catch(error=>{
+            console.log(error)
+        })
         }
     },
     components: {

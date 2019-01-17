@@ -14,6 +14,9 @@
         <table class="table table-hover table-bordered">
             <thead>
                 <tr>
+                    <th v-for="extra in extraColumns" :key="extra+randId()">
+                        {{extra | colName}}
+                    </th>
                     <th v-for="col in visibleColumns" scope="col" :key="col">
                         {{col | colName}}
                     </th>
@@ -22,6 +25,12 @@
 
             <tbody>
                 <tr v-for="row in dataFiltered" :key="randId()+row[visibleColumns[0]]">
+                    
+                    <!-- values for extra columns -->
+                    <td v-for="extraCol in extraColumns" :key="extraCol+randId()">
+                        <slot :name="extraCol" v-bind:row="row"></slot>
+                    </td>
+
                     <td v-for="col in visibleColumns" :key="col">{{ row[col] }}</td>
                 </tr>
             </tbody>
@@ -32,7 +41,7 @@
 <script>
 export default {
     name: 'dataTable',
-    props: ['dataSource', 'excludedColumns', 'searchTerm'],
+    props: ['dataSource', 'excludedColumns', 'searchTerm', 'extraColumns'],
 
     data(){
         return {

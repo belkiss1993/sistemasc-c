@@ -1,13 +1,23 @@
 <template>
+  <div>
     <dataTable 
-        :dataSource="servicios" 
-        :excludedColumns="['tipoServicioId']"
-        searchTerm="nombre" />
+    :dataSource="servicios" 
+    :excludedColumns="['tipoServicioId', 'id']" 
+    :extraColumns="['Acciones']"
+    searchTerm="nombre">    
+    
+      <template slot-scope="data" slot="Acciones">
+        <a href="#" class="btn btn-danger" @click.prevent="eliminarServicio(data.row.id)">Eliminar</a>
+        <a href="#" class="btn btn-default">Ver</a>
+      </template>
+    </dataTable>
+  </div>
 </template>
+
 
 <script>
 import axios from "axios";
-const dataTable = ()=> import('@/components/dataTable')
+const dataTable = () => import("@/components/dataTable");
 
 export default {
   data() {
@@ -34,11 +44,28 @@ export default {
         .catch(error => {
           console.log(error);
         });
+    },
+
+    eliminarServicio(id) {
+      const continuar = confirm("¿Desea eliminar?");
+      
+      if (!continuar) {
+        return;
+      }
+
+      console.log(id)
+
+      axios.post("http://localhost:3000/servicios/eliminar", {id}).then(response=>{
+          this.obtenerservicios();
+
+        }).catch(error => {
+          console.log(error);
+      })
     }
   },
 
   components: {
-      dataTable
+    dataTable
   }
-};
+}
 </script>
