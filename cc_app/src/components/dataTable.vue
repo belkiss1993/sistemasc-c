@@ -14,8 +14,10 @@
         <table class="table table-hover table-bordered">
             <thead>
                 <tr>
+
                     <th v-for="extra in extraColumns" :key="extra+randId()">
-                        {{extra | colName}}
+                        <slot :name="`${extra}-header`"></slot>
+                        <span v-if="!$slots[`${extra}-header`]">{{extra | colName}}</span>
                     </th>
                     <th v-for="col in visibleColumns" scope="col" :key="col">
                         {{col | colName}}
@@ -60,6 +62,10 @@ export default {
         randId(){
             const max = 100000
             return Math.floor(Math.random() * Math.floor(max))
+        },
+
+        extraHeader(name){
+            return 
         }
     },
 

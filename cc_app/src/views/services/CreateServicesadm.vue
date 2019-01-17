@@ -62,8 +62,6 @@ export default {
         .then(response => {
           const data = response.data;
           this.tipo_servicios = data.tipo_servicios;
-
-          console.log("data_de_servicios", this.tipo_servicios);
         })
         .catch(error => {
           console.log("error de conexion", error);
@@ -90,8 +88,10 @@ export default {
         .post("http://localhost:3000/servicios/crear_servicio", data)
         .then(response => {
           btnGuardar.disabled = false;
-          this.$router.go()
-          console.log(response.data);
+          this.NuevoServicio.nombre = '';
+          this.NuevoServicio.descripcion = '';
+          
+          this.$emit('created')
         })
         .catch(error => {
           btnGuardar.disabled = false;

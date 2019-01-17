@@ -1,14 +1,27 @@
 <template>
   <div>
+
+    <modal id="crear-servicio-modal">
+      <template slot="contenido">
+        <createServicesAdm @created="refrescarModal" />
+      </template>
+    </modal>
+
     <dataTable 
-    :dataSource="servicios" 
-    :excludedColumns="['tipoServicioId', 'id']" 
-    :extraColumns="['Acciones']"
-    searchTerm="nombre">    
+      :dataSource="servicios" 
+      :excludedColumns="['tipoServicioId', 'id']" 
+      :extraColumns="['Acciones']"
+      searchTerm="nombre">
+
+      <template slot="Acciones-header">
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#crear-servicio-modal">
+          Crear Servicio
+        </button>
+      </template>
     
       <template slot-scope="data" slot="Acciones">
-        <a href="#" class="btn btn-danger" @click.prevent="eliminarServicio(data.row.id)">Eliminar</a>
-        <a href="#" class="btn btn-default">Ver</a>
+        <a href="#" class="" style="margin-right:5px">Editar</a>
+        <a href="#" class="text-red" @click.prevent="eliminarServicio(data.row.id)">Eliminar</a>
       </template>
     </dataTable>
   </div>
@@ -17,6 +30,9 @@
 
 <script>
 import axios from "axios";
+import modal from '@/components/Modal'
+const createServicesAdm = ()=> import('@/views/services/CreateServicesadm')
+
 const dataTable = () => import("@/components/dataTable");
 
 export default {
@@ -61,11 +77,18 @@ export default {
         }).catch(error => {
           console.log(error);
       })
+    },
+
+    refrescarModal(){
+      $('#crear-servicio-modal').modal('toggle')
+      this.obtenerservicios()
     }
   },
 
   components: {
-    dataTable
+    dataTable,
+    modal,
+    createServicesAdm
   }
 }
 </script>
