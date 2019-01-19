@@ -1,12 +1,26 @@
 <template>
     <div>
+
+         <modal id="crear-producto-modal">
+             <template slot="contenido">
+               <createProductsAdm @created="refrescarModal" />
+             </template>
+         </modal>
+
         <dataTable 
             :dataSource="productos" 
             :excludedColumns="['id', 'tipoProductoId', 'tipoSegmentoId']"
             :extraColumns="['Acciones']"
             searchTerm="modelo">
+
+            <template slot="Acciones-header">
+         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#crear-producto-modal">
+          Crear Producto
+        </button>
+            </template>
             
             <template slot-scope="data" slot="Acciones">
+                <a href="#" class="" style="margin-right:5px">Editar</a>
                 <a href="#" class="btn btn-danger" @click.prevent="eliminarProducto(data.row.id)">Eliminar</a>
             </template>
         </dataTable>
@@ -15,7 +29,9 @@
 
 <script>
 import axios from 'axios'
-import dataTable from '@/components/dataTable'
+import modal from '@/components/Modal'
+const createProductsAdm = () => import('@/views/products/CreateProductsadm')
+const dataTable = () => import("@/components/dataTable");
 
 export default {
     data(){
@@ -52,10 +68,17 @@ export default {
         }).catch(error=>{
             console.log(error)
         })
-        }
+        },
+        refrescarModal(){
+         $('#crear-producto-modal').modal('toggle')
+         this.obtenerproductos()
+    }
+        
     },
     components: {
-        dataTable
+     dataTable,
+     modal,
+    createProductsAdm
     }
 
 }

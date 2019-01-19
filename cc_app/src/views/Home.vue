@@ -6,40 +6,36 @@
       <slider sliderId="mainCarousel" />
     </center>
   </div>
+ 
   <div class="row">
-    <div class="col-md-4">
-    <center>
-     <p>
-        <img src="../img/personal.png" width="150" height="150" align="middle" alt=""/>
-      </p>
-    </center>
-
-      <h3 class="text-center">Nuestros Empleados</h3>
-      <br>
-      Contamos con más de 100 empleados al día de hoy, destacándose en diferentes áreas como comerciales, tecnicos, ejecutivos, administradores, preventa.
+    <div class="col">
+      <h3 class="text-center">En lo que creemos
+      </h3>
+        <p class="text-justify">Creemos que la asesoría y el soporte técnico, constituyen la espina dorsal de nuestro negocio. Es por eso que buscamos que ambos sean proporcionados de forma confiable, oportuna y eficiente.
+  </p>
     </div>
-    <div class="col-md-4">
-          <center>
-         <p>
-        <img src="../img/region.png" width="150" height="150" align="middle" alt=""/>
+    <div class="col">
+      <h3 class="text-center">
+      Distribución Geográfica
+      </h3>
+        <p class="text-justify">Actualmente, desplegamos nuestros negocios con oficinas 
+          locales en Honduras y El Salvador. 
         </p>
-         </center> 
-      <h3 class="text-center">La Región</h3>
-      <br>
-    
-      Sistemas C&C, S.A. de C.V. se encuentra en la región, distribuyendo todo tipo de soluciones tecnológicas, nos encontramos en El Salvador y Honduras, en Guatemala como Canella, S.A.
+      </div>
+
+    <div class="col">
+      <h3 class="text-center">
+      Dirección Honduras
+    </h3>
+        <p class="text-justify">
+          Sistemas C&C, S.A. de C.V.
+      Edif. Plaza Azul, 3er Nivel, Local No. 37 
+      Col. Lomas del Guijarro Sur, TGU
+      PBX: (+504) 2239 3800
+
+       </p>
     </div>
-    <div class="col-md-4">
-       <center>
-     <!-- <p>
-        <img src="" width="150" height="150" align="middle" alt=""/>
-      </p> -->
-    </center>
-      <h3 class="text-center">informacion</h3>
-      <br>
-    Contactos, ubicacion
-   
-    </div>
+  
   </div>
   
 </div>

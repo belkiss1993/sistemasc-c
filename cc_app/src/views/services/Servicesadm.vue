@@ -21,6 +21,7 @@
     
       <template slot-scope="data" slot="Acciones">
         <a href="#" class="" style="margin-right:5px">Editar</a>
+ 
         <a href="#" class="text-red" @click.prevent="eliminarServicio(data.row.id)">Eliminar</a>
       </template>
     </dataTable>
@@ -32,7 +33,6 @@
 import axios from "axios";
 import modal from '@/components/Modal'
 const createServicesAdm = ()=> import('@/views/services/CreateServicesadm')
-
 const dataTable = () => import("@/components/dataTable");
 
 export default {

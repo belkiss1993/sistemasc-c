@@ -90,6 +90,7 @@ export default {
           const data = response.data;
           this.tipo_producto = data.tipo_producto;
 
+
           console.log("data_de_productos", this.tipo_producto);
         })
         .catch(error => {
@@ -135,7 +136,10 @@ this.error_msj=""
         .post("http://localhost:3000/productos/crear_producto", data)
         .then(response => {
           btnGuardar.disabled = false;
-          this.$router.go()
+           this.Nuevoproducto.nombre = '';
+          this.Nuevoproducto.descripcion = '';
+          this.Nuevoproducto.modelo = '';
+          this.$emit('created')
         })
         .catch(error => {
          btnGuardar.disabled = false;

@@ -5,7 +5,7 @@ import Home from './views/Home.vue'
 const About = ()=> import('./views/contact.vue')
 const Login  = ()=> import('./views/user/Login.vue')
 const Registro = ()=> import('./views/user/Registro.vue')
-const Productos = ()=> import('./views/products/Product.vue')
+// const Productos = ()=> import('./views/products/Product.vue')
 const Productosadm = ()=> import('./views/products/Productadm.vue')
 const Servicesadm = ()=> import('./views/services/Servicesadm.vue')
 const CreateProductsadm = ()=> import('./views/products/CreateProductsadm.vue')
@@ -34,11 +34,11 @@ export default new Router({
       name: 'userRegister',
       component: Registro
     },
-    {
-      path: '/products',
-      name: 'productosclientes',
-      component: Productos
-    },
+    // {
+    //   path: '/products',
+    //   name: 'productosclientes',
+    //   component: Productos
+    // },
     {
       path:'/adm/products',
       name: 'productosadm',
