@@ -61,7 +61,8 @@ router.post('/login', async function(req, res){
     // buscar usuario en la base de datos
     try {
         const qryLogin= `
-          select 
+          select
+            id,
             email,
             nombre,
             password,
@@ -87,10 +88,20 @@ router.post('/login', async function(req, res){
         if(usuario.password != pass)
             return res.status(400).json({exitoso: false, error: 'credenciales no validas'})
 
+        const qryPermisos = `
+            select permisoId 
+            from usuario_permisos
+            where usuarioId = :usuarioId
+              and fecha_eliminado is null`
+
+        const permisos = await sqlQuery(qryPermisos, {usuarioId: usuario.id})
+
         const data = {
+            id: usuario.id,
             nombre: usuario.nombre,
             email: usuario.email,
-            tipoUsuarioId: usuario.tipoUsuarioId        
+            tipoUsuarioId: usuario.tipoUsuarioId,
+            permisos 
         }
 
         res.status(200).json({exitoso: true, data})

@@ -33,16 +33,26 @@
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <router-link class="dropdown-item" to="/adm/createservices">Crear Servicios</router-link>
           <router-link class="dropdown-item" to="/adm/services">Ver lista de Servicios</router-link>
-            
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Borrar servicios</a>
         </div>
       </li>
       <li class="nav-item">
-        <a class="nav-link " href="#">Salir</a>
+        <a class="nav-link" href="#" @click.prevent="logout">Salir</a>
+
+        
       </li>
     </ul>
   </div>
 </nav>
 
 </template>
+
+
+<script>
+export default {
+  methods: {
+    logout() {
+      location.replace('/')
+    }
+  }
+}
+</script>

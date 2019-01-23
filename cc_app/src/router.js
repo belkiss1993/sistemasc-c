@@ -1,11 +1,11 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import constants from './constantes'
 
 import Home from './views/Home.vue'
 const About = ()=> import('./views/contact.vue')
 const Login  = ()=> import('./views/user/Login.vue')
 const Registro = ()=> import('./views/user/Registro.vue')
-// const Productos = ()=> import('./views/products/Product.vue')
 const Productosadm = ()=> import('./views/products/Productadm.vue')
 const Servicesadm = ()=> import('./views/services/Servicesadm.vue')
 const CreateProductsadm = ()=> import('./views/products/CreateProductsadm.vue')
@@ -34,31 +34,45 @@ export default new Router({
       name: 'userRegister',
       component: Registro
     },
-    // {
-    //   path: '/products',
-    //   name: 'productosclientes',
-    //   component: Productos
-    // },
+
+    /**
+     * Rutas de administrador
+     */
     {
       path:'/adm/products',
       name: 'productosadm',
-      component: Productosadm
-
+      component: Productosadm,
+      meta: {
+        requiresAuth: true,
+        permissionRequired: constants.permisosProductos.ver
+      }
     },
     {
       path:'/adm/services',
-     name:'servicesadm',
-     component: Servicesadm
+      name:'servicesadm',
+      component: Servicesadm,
+      meta: {
+        requiresAuth: true,
+        permissionRequired: constants.permisosServicios.ver
+      }
     },
     {
       path:'/adm/createproducts',
       name:'createproductsadm',
-      component: CreateProductsadm
+      component: CreateProductsadm,
+      meta: {
+        requiresAuth: true,
+        permissionRequired: constants.permisosProductos.crear
+      }
     },
     {
       path:'/adm/createservices',
       name:'createservicesadm',
-      component: CreateServicesadm
+      component: CreateServicesadm,
+      meta: {
+        requiresAuth: true,
+        permissionRequired: constants.permisosServicios.crear
+      }
     }
   ]
 })

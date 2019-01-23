@@ -3,7 +3,7 @@
     <div class="row">
         <div class="col-md-5"></div>
         <div class="col-md-5">
-            <form>
+            <form @submit.prevent="verifyAccount">
                 <div class="form-group">
                     <label for="email">Dirección de correo electrónico</label>
                     <input 
@@ -28,15 +28,8 @@
                     {{error}}
                 </div>
 
-                <!-- <div class="form-check">
-                  <input type="checkbox" class="form-check-input" id="dropdownCheck">
-                     <label class="form-check-label" for="dropdownCheck">
-                      Remember me
-                     </label>
-               </div> -->
-
                 <div class="form-group">
-                    <button type="button" @click.prevent="verifyAccount" class="btn btn-primary">Entrar</button>
+                    <button type="submit" @click.prevent="verifyAccount" class="btn btn-primary">Entrar</button>
                 </div>
             </form>
             <div class="dropdown-divider"></div>

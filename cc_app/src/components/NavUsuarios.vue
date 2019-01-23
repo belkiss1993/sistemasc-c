@@ -63,8 +63,10 @@
                         </li>
                     </ul>
                     <ul class="nav navbar-nav w-100 justify-content-end">
-                        <span>PBX: (+504) 2239 3800</span>
+                        <span style="margin-right: 10px">PBX: (+504) 2239 3800</span>
                     </ul>
+                    <a href="https://www.facebook.com/Sistemascchn" style="color: #3A5795" target="_blank" class="fa fa-facebook"></a>
+                    <a href="https://www.instagram.com/sistemascc" style="color: #cb3097" target="_blank" class="fa fa-instagram"></a>
                 </div>            
             </nav>
         </div>
@@ -89,5 +91,29 @@ export default {
 
 #nav a.router-link-exact-active {
   color: #eb4434;
+}
+
+.fa {
+  padding: 5px;
+  font-size: 30px;
+  width: 50px;
+  text-align: center;
+  text-decoration: none;
+}
+
+.fa:hover {
+  opacity: 0.5;
+}
+
+/* Facebook */
+.fa-facebook {
+  background: 59, 89, 152;
+  color: white;
+}
+
+/* Twitter */
+.fa-instagram {
+  background: 195, 42, 163;
+  color: white;
 }
 </style>
