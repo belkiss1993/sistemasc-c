@@ -1,11 +1,19 @@
 <template>
 
     <div class="row">
+        <!-- <div class="login-wrapper"> -->
         <div class="col-md-5"></div>
         <div class="col-md-5">
             <form @submit.prevent="verifyAccount">
-                <div class="form-group">
-                    <label for="email">Dirección de correo electrónico</label>
+        
+                <div class="imgcontainer">
+                     <img src="iconoperfil.jpg" alt="icon" class="icon">
+               </div>
+    
+
+                <div class="form-group" >
+                    <div class>
+                    <label for="email" >Dirección de correo electrónico</label>
                     <input 
                         v-model="email"
                         type="text" 
@@ -13,6 +21,8 @@
                         class="form-control" 
                         placeholder="Email" />
                 </div>
+                </div>
+               
 
                 <div class="form-group">
                     <label for="password">Contraseña</label>
@@ -29,7 +39,7 @@
                 </div>
 
                 <div class="form-group">
-                    <button type="submit" @click.prevent="verifyAccount" class="btn btn-primary">Entrar</button>
+                    <button type="submit" @click.prevent="verifyAccount" class="btn btn-lg btn-primary btn-block btn-signin" ty>Iniciar sesión</button>
                 </div>
             </form>
             <div class="dropdown-divider"></div>
@@ -42,7 +52,9 @@
         
         <div class="col-md-2">
         </div>
-    </div>
+   
+   
+   </div>
 
 </template>
 
@@ -98,5 +110,23 @@ export default {
 </script>
 
 <style>
+/* .login-wrapper{
+  background-color:#f7f7f7;
+  width: 420px;
+  height: 400px;
+  border-radius: 2px;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.3);
+  margin: 0 auto;
+  
+} */
+.imgcontainer{
+  text-align: center;
+  margin: 34px 0 22px 0;
+}
+/* Avatar image */
+img.icon {
+  width: 40%;
+  border-radius: 80%;
+}
 
 </style>

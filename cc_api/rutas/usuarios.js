@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const {sqlQuery, encrypt} = require('../config/general')
+const {valorValido, sqlQuery, encrypt} = require('../config/general')
 
 router.get('/', async function(req, res){
 
@@ -8,12 +8,15 @@ router.get('/', async function(req, res){
 try {
     const qryCrearUsuario=
     `select 
+        u.id,
     u.nombre ,
     tu.descripcion
     from usuarios u
     inner join tipo_usuarios tu
      on tu.id= u.tipoUsuarioId
-     and tu.fecha_eliminado is null`
+     and tu.fecha_eliminado is null
+     where u.fecha_eliminado is null`
+
 
 const resultados = await sqlQuery(qryCrearUsuario)
     

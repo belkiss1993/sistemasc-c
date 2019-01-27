@@ -5,17 +5,16 @@
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
                 <img src="../img/sistemas.png" width="70" height="70" alt=""/>
 
-                <button 
-                    class="navbar-toggler" 
-                    type="button" 
-                    data-toggle="collapse" 
-                    data-target="#navbarNavDropdown" 
-                    aria-controls="navbarNavDropdown" 
-                    aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+   <button class="navbar-toggler"
+      type="button" data-toggle="collapse"
+       data-target="#navbarSupportedContent" 
+       aria-controls="navbarSupportedContent" 
+       aria-expanded="false"
+        aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
                 
-                <div class="collapse navbar-collapse w-100" id="navbarNavDropdown">
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav w-100 justify-content-center">
                         <li class="nav-item active">
                             <router-link class="nav-link" to="/"> Inicio </router-link>
@@ -29,8 +28,8 @@
                                 Productos
                             </a>
                             
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                <router-link class="dropdown-item" to="/">Profesional</router-link>
+                            <div class="dropdown-menu"  aria-labelledby="navbarDropdownMenuLink">
+                                <router-link class="dropdown-item"  to="/" >Profesional</router-link>
                                 <a class="dropdown-item" href="#">Empresa</a>
                                 <a class="dropdown-item" href="#">Hogar</a>
                             </div>

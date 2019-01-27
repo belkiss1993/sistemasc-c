@@ -1,6 +1,5 @@
 <template>
   <div>
-
     <modal id="crear-servicio-modal">
       <template slot="contenido">
         <createServicesAdm @created="refrescarModal" />

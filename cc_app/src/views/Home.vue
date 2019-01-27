@@ -10,6 +10,17 @@
  
   <div class="row">
     <div class="col">
+      <h3 class="text-center">Quiénes somos</h3>
+      <br>
+      <p class="text-justify">
+        Somos una empresa dedicada a implementar 
+        soluciones tecnológicas y de innovación 
+        por medio de nuestros Productos y Servicios.
+      </p>
+    </div>
+
+
+    <div class="col">
       <h3 class="text-center">En lo que creemos</h3>
       <br>
       <p class="text-justify">
@@ -26,16 +37,7 @@
       <a href="#" class="btn btn-secondary">Mas detalles</a>
     </div>
 
-    <div class="col">
-      <h3 class="text-center">Dirección Honduras</h3>
-      <br>
-      <p class="text-justify">
-        Sistemas C&C, S.A. de C.V.
-        Edif. Plaza Azul, 3er Nivel, Local No. 37 
-        Col. Lomas del Guijarro Sur, TGU
-        PBX: (+504) 2239 3800
-      </p>
-    </div>
+  
   </div>
 
   <div class="row info-seccion">
@@ -62,10 +64,39 @@
 
     </div>
 
+
     <div class="col-md-4">
       <img src="valores.png" class="img-fluid" alt="" srcset="">
     </div>
   </div>
+
+  <div class="row info-seccion">
+    
+    <div class="col-md-8">
+      <h1 class="text-center">Áreas de Negocios</h1>
+        <p class="text-justify">
+          Disponemos de un catálogo de soluciones y servicios TI que, gracias a
+          la diversificación de soluciones y capacidad de integrarlas, así como
+          nuestra especialización en servicios globales, las certificaciones ATPS (Canon), 
+          CAS (HPE) de nuestro recurso y capacidad de explotación de los mismos, nos permite
+          responder a las necesidades de nuestros clientes. Ofrecemos servicios multi­tecnología 
+          de vanguardia que integran todas las necesidades de su compañía.
+        </p>
+        <h1 class="text-center">Alianzas Estratégicas, Acuerdos y Certificaciones</h1>
+        <p class="text-justify">Nuestra política de alianzas se basa en certificaciones 
+          y acuerdos de alto nivel con los fabricantes de referencia mundial en el sector 
+          de soluciones de informática, oficina, digitalización y capacitaciones, basamos nuestros 
+          proyectos en las metodologías más aceptadas en el mercado (PMI/ITIL) y en marcos de buenas 
+          prácticas y seguridad (ISO).
+</p>
+    </div>
+
+
+    <div class="col-md-4">
+      <img src="marcas.jpg" class="img-fluid" alt="" srcset="">
+    </div>
+  </div>
+
   
 </div>
 </template>

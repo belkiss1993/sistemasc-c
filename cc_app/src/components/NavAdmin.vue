@@ -35,10 +35,19 @@
           <router-link class="dropdown-item" to="/adm/services">Ver lista de Servicios</router-link>
         </div>
       </li>
+
+      <li class="nav-item">
+         <router-link  class="nav-link" to="/adm/createusers" href="#" role="button"  aria-haspopup="true" aria-expanded="false">
+          Crear usuarios
+       </router-link>
+
+      </li>
+      
+       
+      
+
       <li class="nav-item">
         <a class="nav-link" href="#" @click.prevent="logout">Salir</a>
-
-        
       </li>
     </ul>
   </div>
