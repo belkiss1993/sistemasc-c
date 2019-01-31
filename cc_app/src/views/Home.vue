@@ -44,7 +44,9 @@
           Actualmente, desplegamos nuestros negocios con oficinas
           locales en Honduras y El Salvador.
         </p>
-        <!-- <a href="#" class="btn btn-secondary">Mas detalles</a> -->
+       <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal1">
+  Launch demo modal
+    </button>
       </div>
     </div>
 
@@ -115,6 +117,7 @@ export default {
   components: {
     slider
   }
+  
 };
 </script>
 

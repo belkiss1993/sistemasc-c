@@ -17,14 +17,14 @@
              </div>
         </div>
         <div class="carousel-item slider-img" style="height: 100vh">
-            <img class="d-block w-100" src="../img/sistemas122.jpg" alt="Second slide image" >
+            <img class="d-block w-100" src="../img/sistemas122.jpg"  width="380" height="620" alt="Second slide image" >
             <div class="carousel-caption d-none d-md-block">
                 <h5>Sistemas C&C</h5>
                 <p>A tu sevicio</p>
             </div>
         </div>
     <div class="carousel-item active slider-img" style="height: 100vh">
-      <img class="d-block w-100" src="../img/Plan.png"  width="350" height="650" alt="Third slide image">
+      <img class="d-block w-100" src="../img/Plan.png"  width="380" height="620" alt="Third slide image">
        <div class="carousel-caption d-none d-md-block">
         <h5>Hewlett-Packard</h5>
         <p></p>

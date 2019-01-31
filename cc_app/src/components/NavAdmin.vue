@@ -13,37 +13,37 @@
       </li>
      
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <router-link class="nav-link"  to="/adm/products" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Productos
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+        </router-link>
+        <!-- <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <router-link class="dropdown-item" to="/adm/createproducts">Crear Productos</router-link>
           <router-link class="dropdown-item" to="/adm/products">Ver lista productos</router-link>
             
          
-        </div>
+        </div> -->
       </li>
     
 
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+         <router-link class="nav-link" to="/adm/services" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Servicios
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+        </router-link>
+        <!-- <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <router-link class="dropdown-item" to="/adm/createservices">Crear Servicios</router-link>
           <router-link class="dropdown-item" to="/adm/services">Ver lista de Servicios</router-link>
-        </div>
+        </div> -->
       </li>
 
       <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+           <router-link class="nav-link"  to="/adm/usersadm" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Usuarios
-        </a>  
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">  
+        </router-link> 
+          <!-- <div class="dropdown-menu" aria-labelledby="navbarDropdown">  
           <router-link  class="dropdown-item" to="/adm/createusers" href="#" role="button"  aria-haspopup="true" aria-expanded="false">
           Crear usuarios</router-link>
           <router-link class="dropdown-item" to="/adm/usersadm">Ver lista de usuarios</router-link>
-        </div>
+        </div> -->
       </li>
       
        
@@ -65,6 +65,13 @@ export default {
     logout() {
       location.replace('/')
     }
+    
+  },
+
+  components: {
+    modal
   }
-}
+ }
+
+
 </script>
