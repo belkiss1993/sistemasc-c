@@ -7,7 +7,7 @@
             <form @submit.prevent="verifyAccount">
         
                 <div class="imgcontainer">
-                     <img src="iconoperfil.jpg" alt="icon" class="icon">
+                     <img src="icon-design-users.png" alt="icon" class="icon">
                </div>
     
 
@@ -122,6 +122,7 @@ export default {
 .imgcontainer{
   text-align: center;
   margin: 34px 0 22px 0;
+
 }
 /* Avatar image */
 img.icon {

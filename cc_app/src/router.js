@@ -10,7 +10,8 @@ const Productosadm = ()=> import('./views/products/Productadm.vue')
 const Servicesadm = ()=> import('./views/services/Servicesadm.vue')
 const CreateProductsadm = ()=> import('./views/products/CreateProductsadm.vue')
 const CreateServicesadm = ()=> import('./views/services/CreateServicesadm.vue')
-const Createusersadm = ()=> import('./views/user/CreateUsersadm.vue')
+const CreateUsersadm = ()=> import('./views/user/CreateUsersadm.vue')
+const Usersadm = ()=> import('./views/user/Usersadm.vue')
 Vue.use(Router)
 
 export default new Router({
@@ -76,9 +77,14 @@ export default new Router({
       }
     },
     {
+    path:'/adm/usersadm',
+    name:'useradm',
+    component:Usersadm
+    },
+    {
     path:'/adm/createusers',
     name:'createuseradm',
-    component:  Createusersadm
-    }
+    component:CreateUsersadm
+    },
   ]
 })

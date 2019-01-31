@@ -10,24 +10,24 @@
       </ol>
      <div class="carousel-inner" role="listbox">
         <div class="carousel-item slider-img"  style="height: 100vh" >
-            <img class="d-block w-100" src="../img/PIXMA.png" alt="First slide image">
+            <img class="d-block w-100" src="../img/orig_221407.jpg" alt="First slide image">
             <div class="carousel-caption d-none d-md-block">
-                <h5>ljdgnjrntgj</h5>
-                <p> fbgmj bjrg rlkt </p>
+                <h5>CANON</h5>
+                <p> </p>
              </div>
         </div>
         <div class="carousel-item slider-img" style="height: 100vh">
-            <img class="d-block w-100" src="../img/paisaje.jpg" alt="Second slide image" >
+            <img class="d-block w-100" src="../img/sistemas122.jpg" alt="Second slide image" >
             <div class="carousel-caption d-none d-md-block">
-                <h5>ihebvebre</h5>
-                <p>n jrbnrtn</p>
+                <h5>Sistemas C&C</h5>
+                <p>A tu sevicio</p>
             </div>
         </div>
     <div class="carousel-item active slider-img" style="height: 100vh">
-      <img class="d-block w-100" src="../img/omen.jpg" alt="Third slide image">
+      <img class="d-block w-100" src="../img/Plan.png"  width="350" height="650" alt="Third slide image">
        <div class="carousel-caption d-none d-md-block">
-        <h5>n fj gbjfr</h5>
-        <p>n djgbirg jl tj</p>
+        <h5>Hewlett-Packard</h5>
+        <p></p>
      </div>
    </div>
    </div>
