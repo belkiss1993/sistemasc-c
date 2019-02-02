@@ -100,7 +100,7 @@
                  
                  
                   <h4>Informes y registros precisos</h4>
-                 <p class="text-justify font-italic">  
+                 <p class="text-justify">  
                   Los proveedores deben mantener registros precisos sobre todos
                   los asuntos referidos a sus transacciones con Sistemas C&C S. A de C.V.,
                   entre otros, el estado de cuenta de gastos y pagos recibidos.
@@ -111,7 +111,7 @@
                   de su periodo contable correspondiente.</p>
                   
                   <h4>Bienes e información</h4>
-
+                   <p class="text-justify">
                   Los proveedores deben proteger los bienes y la información de Sistemas C&C S. A de C.V.
                   Los proveedores a quienes se les ha dado acceso a los bienes de Sistemas C&C S. A de C.V.,
                   ya sean tangibles o intangibles, deben utilizarlos para los fines contratados
@@ -122,11 +122,15 @@
                   autorizado el acceso a información confidencial de Sistemas C&C S. A de C.V.,
                   debe notificar el hecho de inmediato a la persona de su contacto en
                   Sistemas C&C S. A de C.V. y abstenerse de distribuir la información.
-                  Este Código se aplica a todos los proveedores de bienes y servicios de Sistemas C&C S. A de C.V., y a los empleados, agentes y contratistas de estos que suministran bienes o prestan servicios a Sistemas C&C S. A de C.V.
-                  Los proveedores no deben compartir con ninguna persona de Sistemas C&C S. A de C.V. la información relativa a otra persona u organización si tienen una obligación contractual o legal que les prohíbe compartir esa información.
+                  Este Código se aplica a todos los proveedores de bienes y servicios de Sistemas C&C S. A de C.V., 
+                  y a los empleados, agentes y contratistas de estos que suministran bienes o prestan servicios 
+                  a Sistemas C&C S. A de C.V.
+                  Los proveedores no deben compartir con ninguna persona de Sistemas C&C S. A de C.V. la información 
+                  relativa a otra persona u organización si tienen una obligación contractual o legal que les prohíbe 
+                  compartir esa información.</p>
                  
                   <h4>Sobornos y corrupción</h4>
-
+                 <p class="text-justify">   
                   Sistemas C&C S. A de C.V. tiene una política de tolerancia cero en cuanto a ofrecer o 
                   aceptar sobornos o cometer cohecho. En relación con cualquier transacción como proveedor 
                   de Sistemas C&C S. A de C.V., o que tenga que ver con Sistemas C&C S. A de C.V., 
@@ -141,10 +145,10 @@
                    comidas, cortesías o cualquier otra cosa de valor) que se hayan realizado en nombre 
                    de Sistemas C&C S. A de C.V., o con fondos provenientes de Sistemas C&C S. A de C.V.
                    Los proveedores deben presentar copia de todo tipo de comprobante a petición de 
-                   Sistemas C&C S. A de C.V.
+                   Sistemas C&C S. A de C.V.</p>
                   
                   <h4>Obsequios, comidas, invitaciones y otras atenciones</h4>
-
+                   <p class="text-justify"> 
                   Los empleados de Sistemas C&C S. A de C.V. pueden intercambiar obsequios, comidas, 
                   entretenimiento y otras cortesías de negocios con los proveedores solamente si son 
                   razonables, ocasionales y de bajo costo y siempre que se encuadren y estén conformes
@@ -152,10 +156,11 @@
                   de Sistemas C&C S. A de C.V. pueden estar sujetos a límites monetarios en cuanto al valor
                   de las cortesías de negocios que se les permita dar o recibir. En cualquier caso, en ninguna
                   circunstancia, los empleados de Sistemas C&C S. A de C.V. deben ofrecer o aceptar cortesías 
-                  si estas pudiesen afectar, o pareciesen afectar, la toma de una decisión. Y jamás pueden dar o recibir dinero en efectivo. Se espera que nuestros proveedores respeten estas restricciones.
+                  si estas pudiesen afectar, o pareciesen afectar, la toma de una decisión. Y jamás pueden dar
+                   o recibir dinero en efectivo. Se espera que nuestros proveedores respeten estas restricciones.</p>
                  
                   <h4>Conflictos de intereses</h4>
-
+                  <p class="text-justify"> 
                   Cada vez que un empleado de Sistemas C&C S. A de C.V. realice negocios en nombre de la empresa, 
                   siempre debe actuar según los mejores intereses de Sistemas C&C S. A de C.V. No debe tener una 
                   relación, financiera o de otro tipo, con un proveedor si esto generara conflicto de intereses,
@@ -167,16 +172,16 @@
                    al empleado cuando se trate de tomar decisiones de negocios. Si el proveedor tiene una relación 
                    de familia, o de otro tipo, con un empleado de Sistemas C&C S. A de C.V. que pudiese suponer
                    un conflicto de intereses, el proveedor debe comunicar esa información a Sistemas C&C S. A de C.V.
-                   o asegurarse de que el empleado lo haga.
+                   o asegurarse de que el empleado lo haga.</p>
                   
                   <h4>Hablar sin temor</h4>
-
+                  <p class="text-justify"> 
                   Si un proveedor sospecha que un empleado de Sistemas C&C S. A de C.V., o alguien actuando en
                  nombre de Sistemas C&C S. A de C.V., ha incurrido en un comportamiento ilegal o inadecuado,
                   debe informarlo a Sistemas C&C S. A de C.V. Los proveedores pueden plantear el problema ante 
                   el superior del empleado, comunicarse con el personal de ética y cumplimiento de Sistemas C&C S. 
                   A de C.V. a través de la dirección arietti@sistemascc.com. Un informe sincero sobre una potencial
-                   inconducta no afectará la relación del proveedor con Sistemas C&C S. A de C.V.
+                   inconducta no afectará la relación del proveedor con Sistemas C&C S. A de C.V.</p>
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

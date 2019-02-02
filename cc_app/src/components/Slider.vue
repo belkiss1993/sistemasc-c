@@ -10,7 +10,7 @@
       </ol>
      <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
         <div class="carousel-item"  style="height: 100vh" >
-            <img class="d-block w-100" src="../img/orig_221407.jpg" alt="First slide">
+            <img class="d-block w-100" src="../img/orig_221407.jpg" width="380" height="620" alt="First slide">
             <div class="carousel-caption d-none d-md-block">
                 <h5>CANON</h5>
                 <p> </p>
