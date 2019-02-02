@@ -11,7 +11,7 @@
             :dataSource="productos" 
             :excludedColumns="['id', 'tipoProductoId', 'tipoSegmentoId']"
             :extraColumns="['Acciones']"
-            searchTerm="modelo">
+            searchTerm="nombre">
 
             <template slot="Acciones-header">
          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#crear-producto-modal">

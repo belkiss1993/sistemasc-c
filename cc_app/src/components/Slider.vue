@@ -8,23 +8,23 @@
         <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
         <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
       </ol>
-     <div class="carousel-inner" role="listbox">
-        <div class="carousel-item slider-img"  style="height: 100vh" >
-            <img class="d-block w-100" src="../img/orig_221407.jpg" alt="First slide image">
+     <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+        <div class="carousel-item"  style="height: 100vh" >
+            <img class="d-block w-100" src="../img/orig_221407.jpg" alt="First slide">
             <div class="carousel-caption d-none d-md-block">
                 <h5>CANON</h5>
                 <p> </p>
              </div>
         </div>
-        <div class="carousel-item slider-img" style="height: 100vh">
-            <img class="d-block w-100" src="../img/sistemas122.jpg"  width="380" height="620" alt="Second slide image" >
+        <div class="carousel-item " style="height: 100vh">
+            <img class="d-block w-100" src="../img/sistemas122.jpg"  width="380" height="620" alt="Second slide" >
             <div class="carousel-caption d-none d-md-block">
                 <h5>Sistemas C&C</h5>
                 <p>A tu sevicio</p>
             </div>
         </div>
-    <div class="carousel-item active slider-img" style="height: 100vh">
-      <img class="d-block w-100" src="../img/Plan.png"  width="380" height="620" alt="Third slide image">
+    <div class="carousel-item active " style="height: 100vh">
+      <img class="d-block w-100" src="../img/Plan.png"  width="380" height="620" alt="Third slide">
        <div class="carousel-caption d-none d-md-block">
         <h5>Hewlett-Packard</h5>
         <p></p>

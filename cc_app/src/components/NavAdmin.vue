@@ -45,9 +45,7 @@
           <router-link class="dropdown-item" to="/adm/usersadm">Ver lista de usuarios</router-link>
         </div> -->
       </li>
-      
-       
-      
+
 
       <li class="nav-item">
         <a class="nav-link" href="#" @click.prevent="logout">Salir</a>
@@ -69,7 +67,7 @@ export default {
   },
 
   components: {
-    modal
+
   }
  }
 
