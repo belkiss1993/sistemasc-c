@@ -8,7 +8,7 @@
         class="form-control"
         id="Product"
         aria-describedby="Product"
-        placeholder="Product"
+        placeholder="Producto"
       >
     </div>
     <div class="form-group">
@@ -18,7 +18,7 @@
         type="descripción"
         class="form-control"
         id="ProductDescription"
-        placeholder="Product Description"
+        placeholder="Descripción de producto"
       >
     </div>
     <div class="form-group">
@@ -28,7 +28,7 @@
         type="Model"
         class="form-control"
         id="Model"
-        placeholder="Model"
+        placeholder="Modelo"
       >
     </div>
 

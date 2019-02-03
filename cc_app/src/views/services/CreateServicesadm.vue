@@ -7,7 +7,7 @@
         class="form-control"
         id="Service"
         aria-describedby="Services"
-        placeholder="Services"
+        placeholder="Servicio"
         v-model="NuevoServicio.nombre"
       >
     </div>
@@ -17,7 +17,7 @@
         type="descripción"
         class="form-control"
         id="ServicesDescription"
-        placeholder="Services Description"
+        placeholder="Descripcion de Servicio"
         v-model="NuevoServicio.descripcion"
       >
     </div>

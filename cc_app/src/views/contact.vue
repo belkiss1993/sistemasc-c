@@ -1,8 +1,8 @@
 <template>
   <div>
-    <h2>Sistemas C&C</h2>
+    
     <!-- <h4>Dirección:</h4> -->
-    <p class="text-justify">
+    <p class="text-justify"> 
       Sistemas C&C, S.A. de C.V.
       Edif. Plaza Azul, 3er Nivel, Local No. 37
       Col. Lomas del Guijarro Sur, TGU
@@ -10,18 +10,18 @@
     <p>PBX: (+504) 2239 3800</p>
     <iframe
       src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d61504.59770092364!2d-88.0222208!3d15.536128!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8f6fa32927a10399%3A0x85b5c88126b60ba3!2sEDIFICIO+PLAZA+AZUL%2C+Calle+Paris%2C+Tegucigalpa!5e0!3m2!1ses!2shn!4v1548301513576" 
-      width="950"
+      width="1115"
       height="480"
       frameborder="0"
       style="border:0"
       allowfullscreen
     ></iframe>
-    <modal id="modal1" titulo="titulo de modal">
+    <!-- <modal id="modal1" titulo="titulo de modal">
       <template slot="contenido">
         <p>aidgndafbg afdg</p>
         <strong>adfubgiupbgiadbag</strong>
       </template>
-    </modal>
+    </modal> -->
 
     <!-- usar funcion de abrir modal -->
     <!-- <img src="@/img/canon1.png" width="70%" @click.prevent="abrirModal('modal1')">
@@ -30,102 +30,56 @@
     <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal1">
   Launch demo modal
     </button>-->
-    |
-    <div class="container">
-      <div class="row">
-        <div class="col-md-8">
-          <div class="well well-sm">
-            <form class="form-horizontal" method="post">
-              <fieldset>
-                <legend class=" header">CONTACTO</legend>
+    
 
-                <div class="form-group">
-                  <span class="col-md-1 col-md-offset-2 text-center">
-                    <i class="fa fa-user bigicon"></i>
-                  </span>
-                  <div class="col-md-8">
-                    <input
-                      id="fname"
-                      name="name"
-                      type="text"
-                      placeholder="Nombre"
-                      class="form-control"
-                    >
-                  </div>
-                </div>
-                <div class="form-group">
-                  <span class="col-md-1 col-md-offset-2 text-center">
-                    <i class="fa fa-user bigicon"></i>
-                  </span>
-                  <div class="col-md-8">
-                    <input
-                      id="lname"
-                      name="name"
-                      type="text"
-                      placeholder="Apellido"
-                      class="form-control"
-                    >
-                  </div>
-                </div>
+    <body class="contactanos">
+      
+      <div class="container">
+        <form action="">
+         
+          <h2>Contáctece con nosotros</h2>
+          <p  class="into" >Agredecenos el interés por contactarce con nosotros, si decea recibir más información sobre
+            nuestros productos o servicios, porfavor rellene el siguiente formulario y ensegida estaremos 
+            respondiendo.
+          </p>
+          <hr>
+          <div class="row">
+            <div class="col-xs-12 col-ms-6 col-md-6 col-lg-6">
 
-                <div class="form-group">
-                  <span class="col-md-1 col-md-offset-2 text-center">
-                    <i class="fa fa-envelope-o bigicon"></i>
-                  </span>
-                  <div class="col-md-8">
-                    <input
-                      id="email"
-                      name="email"
-                      type="text"
-                      placeholder="Correo"
-                      class="form-control"
-                    >
-                  </div>
+              <input type="text" name="nombre" placeholder="Ingrese su nombre" required>
+
+              <input type="text" name="correo" placeholder="Ingrese su Correo" required>
+
+              <input type="text" name="telefono" placeholder="Ingrese su telefono" required>
+
+              <input type="text" name="empresa" placeholder="Empresa opcional">
+
+              <textarea name="mensaje" placeholder="Escriba aqui su mensaje" required></textarea>
+
+              <input type="submit" value="Enviar" id="boton">
+
+
+            </div>
+                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                  <br>
+                  <p>
+                    <strong>
+                      ¿Deseas mas informacion?
+                    </strong>
+                    Ponte en contacto con nosotros a través de este formulario.
+
+                  </p> 
+                  <img src="@/img/correo.gif" width="30%" class="img-rounded img-respoonsive " alt="">
+
                 </div>
 
-                <div class="form-group">
-                  <span class="col-md-1 col-md-offset-2 text-center">
-                    <i class="fa fa-phone-square bigicon"></i>
-                  </span>
-                  <div class="col-md-8">
-                    <input
-                      id="phone"
-                      name="phone"
-                      type="text"
-                      placeholder="Telefono"
-                      class="form-control"
-                    >
-                  </div>
-                </div>
-
-                <div class="form-group">
-                  <span class="col-md-1 col-md-offset-2 text-center">
-                    <i class="fa fa-pencil-square-o bigicon"></i>
-                  </span>
-                  <div class="col-md-8">
-                    <textarea
-                      class="form-control"
-                      id="message"
-                      name="message"
-                      placeholder="Ingrese su masaje para nosotros aquí. Nos pondremos en contacto con usted."
-                      rows="7"
-                    ></textarea>
-                  </div>
-                </div>
-
-                <div class="form-group">
-                  <div class="col-md-12 text-center">
-                    <button type="submit" class="btn btn-primary btn-lg">Enviar</button>
-                  </div>
-                </div>
-              </fieldset>
-            </form>
           </div>
-        </div>
+        </form>
       </div>
-    </div>
+    </body>
   </div>
 </template>
+
 
 <script>
 import modal from "@/components/Modal";
@@ -144,15 +98,69 @@ export default {
 </script>
 
 <style>
-.header {
-    color: #36A0FF;
-    font-size: 27px;
-    padding: 10px;
+
+
+
+form{
+  margin: auto;
+  background: #fff;
+  max-width: 1000px;
+  padding: 30px;
+  margin-top: 20px;
+  box-shadow: 0px 8px 3px grey;
+  border-radius: 6px;
+  box-sizing: border-box;
+
+}
+h2{
+  color: #00abf0;
+  text-align: center;
+  margin: 0;
+  font-size: 30px;
+  margin-bottom: 20px;
+}
+.into{
+  text-align: center;
+  margin-bottom: 4px;
+  
+  
+}
+input, textarea{
+font-size: 16px;
+/* color: #383f9f; */
+width: 100%;
+border: none;
+border-bottom: 1px solid #00abf0;
+outline: none;
+padding: 15px;
 }
 
-.bigicon {
-    font-size: 35px;
-    color: #36A0FF;
+textarea{
+  min-height: 140px;
+  max-height: 200px;
+  max-width: 100%;
+
+}
+#boton{
+  background: #00abf0;
+  border-radius: 1px;
+  border: 2px solid #f2f2f2;
+  color: #fff;
+  cursor: pointer;
+  font-family: "Roboto";
+  font-size: 16px;
+  width: 100%;
+  padding: 15px;
+  -webkit-transition: all .3s ease;
+  -moz-transition: all .3s ease;
+  -o-transition: all .3s ease;
+  transition: all .3s ease;
+
+}
+#boton:hover{
+  cursor: pointer;
+  background: #ff4040
+
 }
 </style>
 
