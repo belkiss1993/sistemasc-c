@@ -2,7 +2,7 @@
   <div>
     
     <!-- <h4>Dirección:</h4> -->
-    <p class="text-justify"> 
+    <p class="text-justify "> 
       Sistemas C&C, S.A. de C.V.
       Edif. Plaza Azul, 3er Nivel, Local No. 37
       Col. Lomas del Guijarro Sur, TGU

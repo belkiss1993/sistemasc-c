@@ -53,6 +53,7 @@ try {
         p.id,
         p.nombre, 
         p.modelo, 
+        p.enlace,
         p.descripcion as descripcion_producto, 
         p.tipoProductoId, 
         tp.descripcion as descripcion_tipo_producto,
@@ -87,12 +88,13 @@ router.post('/crear_producto', async function(req, res){
         const tipoProducto=req.body.tipoProductoId
         const descripcion=req.body.descripcion
         const segmentoId=req.body.segmentoId
+        const enlace=req.body.enlace
 
         const qryCrearProducto=`
-        insert into productos(nombre,Modelo,tipoProductoId,descripcion,tipoSegmentoId)
-        values (:nombre,:modelo,:tipoProducto,:descripcion,:segmentoId)`
+        insert into productos(nombre,Modelo,tipoProductoId,descripcion,tipoSegmentoId,enlace)
+        values (:nombre,:modelo,:tipoProducto,:descripcion,:segmentoId,:enlace)`
 
-       const params={ nombre,modelo,tipoProducto,descripcion,segmentoId}
+       const params={ nombre,modelo,tipoProducto,descripcion,segmentoId,enlace}
 
        const resultado= await sqlQuery(qryCrearProducto,params)
         
@@ -247,6 +249,40 @@ router.get('/nombre/:nombre', async function(req, res){
     }   
     })
 
+router.get('/explorar/:tipoSegmento', async function(req, res){
 
+    const tipoSegmento = req.params.tipoSegmento
+
+    const qryProductos = `
+        select 
+            p.id,
+            p.nombre, 
+            p.modelo, 
+            p.descripcion as descripcion_producto,
+            p.enlace, 
+            tp.descripcion as descripcion_tipo_producto,
+            ts.descripcion as descripcion_segmento
+        from productos p
+        inner join tipo_producto tp 
+                on tp.id =p.tipoProductoId
+            and tp.fecha_eliminado is null
+        inner join tipo_segmentos ts 
+                on ts.id=p.tipoSegmentoId 
+            and ts.fecha_eliminado is null
+        where p.fecha_eliminado is null
+        and ts.id = :tipoSegmento
+    `
+
+    try {
+        const productos = await sqlQuery(qryProductos, {tipoSegmento})
+        
+        res.status(200).json({exitoso: true, productos})
+           
+    } catch (error) {
+        console.log(error)
+        res.status(500).json({exitoso: false})
+    }
+
+})
 
 module.exports = router

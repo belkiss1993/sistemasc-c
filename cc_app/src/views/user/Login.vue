@@ -86,7 +86,6 @@ export default {
             }
 
             axios.post('http://localhost:3000/usuarios/login', data).then(response =>{
-                console.log(response)
                 const resultado = response.data
 
                 if (resultado.exitoso) {

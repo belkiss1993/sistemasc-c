@@ -14,9 +14,9 @@
             searchTerm="nombre">
 
             <template slot="Acciones-header">
-         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#crear-producto-modal">
-          Crear Producto
-        </button>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#crear-producto-modal">
+                Crear Producto
+            </button>
             </template>
             
             <template slot-scope="data" slot="Acciones">

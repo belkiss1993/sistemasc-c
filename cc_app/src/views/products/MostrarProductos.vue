@@ -1,0 +1,58 @@
+<template>
+<div class="container">
+  
+  <div class="row">
+    <div v-for="producto in productos" :key="producto.id" class="card col-md-4">
+      <img class="card-img-top" src="@/img/canon1.png" alt="Card image cap">
+      <div class="card-body">
+        <center><h5 class="card-title">{{producto.nombre}} {{producto.modelo}}</h5></center>
+        <p class="card-text">
+            {{producto.descripcion_producto}}
+        </p>
+        <p class="card-text" v-if="producto.enlace">
+            <center>
+                <a :href="producto.enlace" target="_blank" class="btn btn-light"><u>Ver Más</u></a>
+            </center>
+        </p>
+      </div>
+    </div>
+  </div>
+
+</div>
+</template>
+
+<script>
+import axios from "axios";
+
+export default {
+  props: ["tipoSegmento"],
+  data() {
+    return {
+      productos: []
+    };
+  },
+
+  created() {
+    this.getProductos();
+  },
+
+  methods: {
+    getProductos() {
+      axios
+        .get("http://localhost:3000/productos/explorar/" + this.tipoSegmento)
+        .then(response => {
+          const data = response.data;
+          if (data.exitoso) this.productos = data.productos;
+        })
+        .catch(error => {
+          console.log(error);
+        });
+    }
+  },
+  watch: {
+    tipoSegmento: function(val) {
+      this.getProductos();
+    }
+  }
+};
+</script>

@@ -12,6 +12,7 @@ const CreateProductsadm = ()=> import('./views/products/CreateProductsadm.vue')
 const CreateServicesadm = ()=> import('./views/services/CreateServicesadm.vue')
 const CreateUsersadm = ()=> import('./views/user/CreateUsersadm.vue')
 const Usersadm = ()=> import('./views/user/Usersadm.vue')
+const MostrarProdctos = ()=> import('./views/products/MostrarProductos.vue')
 Vue.use(Router)
 
 export default new Router({
@@ -35,6 +36,12 @@ export default new Router({
       path: '/users/registro',
       name: 'userRegister',
       component: Registro
+    },
+    {
+      path: '/productos/:tipoSegmento',
+      name: 'ListaProductos',
+      component: MostrarProdctos,
+      props: true
     },
 
     /**

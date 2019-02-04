@@ -33,7 +33,7 @@
                         <slot :name="extraCol" v-bind:row="row"></slot>
                     </td>
 
-                    <td v-for="col in visibleColumns" :key="col">{{ row[col] }}</td>
+                    <td v-for="col in visibleColumns" :key="col">{{ row[col] | truncate(30)}}</td>
                 </tr>
             </tbody>
         </table>
@@ -129,6 +129,16 @@ export default {
             }
 
             return header.trim()
+        },
+
+        truncate(value, length){
+            if(!value)
+                return ''
+
+            if(value.length > length)
+                return value.slice(0, length) + '...'
+  
+            return value
         }
     }
 }

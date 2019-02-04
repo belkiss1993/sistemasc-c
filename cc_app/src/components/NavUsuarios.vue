@@ -34,9 +34,9 @@
               >Productos</a>
 
               <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                <router-link class="dropdown-item" to="/">Profesional</router-link>
-                <a class="dropdown-item" href="#">Empresa</a>
-                <a class="dropdown-item" href="#">Hogar</a>
+                <router-link class="dropdown-item" to="/productos/1">Profesional</router-link>
+                <router-link class="dropdown-item" to="/productos/2">Empresa</router-link>
+                <router-link class="dropdown-item" to="/productos/3">Hogar</router-link>
               </div>
             </li>
 
