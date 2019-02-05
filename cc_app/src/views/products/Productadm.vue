@@ -20,7 +20,7 @@
             </template>
             
             <template slot-scope="data" slot="Acciones">
-                <a href="#" class="" style="margin-right:5px">Editar</a>
+                <a href="#" class="" style="margin-right:5px" @click.prevent="eliminarProducto(data.row.id)">Editar</a>
                 <a href="#" class="btn btn-danger" @click.prevent="eliminarProducto(data.row.id)">Eliminar</a>
             </template>
         </dataTable>

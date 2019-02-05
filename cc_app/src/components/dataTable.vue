@@ -6,7 +6,7 @@
                     <input class="form-control" type="text" id="Buscar" v-model="wordToSearch">
                 </div>
                 <div class="col-md-4">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
+                    <button class="btn btn-outline-success" type="submit">Buscar</button>
                 </div>
             </div>
         </form>

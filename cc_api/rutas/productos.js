@@ -44,6 +44,32 @@ router.post('/eliminar', async function(req, res){
 }
 })
 
+router.post('/editar/:id', async function(req, res){
+
+    const id = req.body.id
+
+    if(!valorValido(id)){
+        return res.status(400).json({exitoso: false, error: 'id no valido'})
+    }
+    
+    try {
+        const qryEditar=
+        `Update Productos Set nombre = nombre, Modelo = Modelo, tipoProductoId = tipoProductoId, 
+        enlace = enlace, descripcion = descripcion, tipoSegmentoId = tipoSegmentoId
+         Where id= :id`
+
+    const params={id}
+
+    const resultados = await sqlQuery(qryEditar, params)
+        
+    res.status(200).json({exitoso: true, resultados})
+
+} catch (error) {
+     console.log(error)
+    res.status(500).json({exitoso: false})
+}
+})
+
 router.get('/', async function(req, res){
 
 // buscar todos los productos en la base de datos

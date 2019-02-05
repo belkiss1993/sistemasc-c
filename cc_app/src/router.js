@@ -13,6 +13,7 @@ const CreateServicesadm = ()=> import('./views/services/CreateServicesadm.vue')
 const CreateUsersadm = ()=> import('./views/user/CreateUsersadm.vue')
 const Usersadm = ()=> import('./views/user/Usersadm.vue')
 const MostrarProdctos = ()=> import('./views/products/MostrarProductos.vue')
+const MostrarServicios = ()=> import('./views/services/MostrarServicios.vue')
 Vue.use(Router)
 
 export default new Router({
@@ -41,6 +42,12 @@ export default new Router({
       path: '/productos/:tipoSegmento',
       name: 'ListaProductos',
       component: MostrarProdctos,
+      props: true
+    },
+    {
+      path: '/servicios/:tipoServicio',
+      name: 'ListaServicios',
+      component: MostrarServicios,
       props: true
     },
 
@@ -74,6 +81,7 @@ export default new Router({
         permissionRequired: constants.permisosProductos.crear
       }
     },
+    
     {
       path:'/adm/createservices',
       name:'createservicesadm',

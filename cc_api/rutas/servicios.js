@@ -11,6 +11,7 @@ router.get('/', async function(req, res){
         select 
             s.id,
             s.nombre, 
+            s.enlace,
             s.descripcion as descripción_servicio, 
             s.tipoServicioId,
             ts.descripcion as descripción_tiposervicio
@@ -18,7 +19,8 @@ router.get('/', async function(req, res){
             inner join tipo_servicios ts
                     on ts.id = s.tipoServicioId
                    and ts.fecha_eliminado is null
-        where s.fecha_eliminado is null`
+        where s.fecha_eliminado is null
+        `
     
         const resultados = await sqlQuery(qryServicios)
     
@@ -65,17 +67,18 @@ router.post('/crear_servicio', async function(req, res){
         const nombre=req.body.nombre
         const descripcion=req.body.descripcion
         const tipoServicioId=req.body.tipoServicioId
+        const enlace=req.body.enlace
 
-        if(!nombre || !descripcion || !tipoServicioId){
+        if(!nombre || !descripcion || !tipoServicioId ){
             return res.status(400).json({exitoso: false, error: 'campos incompletos'})
         }
 
         const qryCrearServicio=`
-            insert into servicios(nombre,descripcion,tipoServicioId)
-                values (:nombre,:descripcion,:tipoServicioId)
+            insert into servicios(nombre,descripcion,tipoServicioId,enlace)
+                values (:nombre,:descripcion,:tipoServicioId,:enlace)
         `
     
-       const params={nombre,descripcion, tipoServicioId}
+       const params={nombre,descripcion, tipoServicioId,enlace}
 
        const resultado = await sqlQuery(qryCrearServicio,params)
         
@@ -130,6 +133,37 @@ router.get('/:id', async function(req, res){
          console.log(error)
         res.status(500).json({exitoso: false})
     }   
+})
+router.get('/explorar/:tipoServicio', async function(req, res){
+
+    const tipoServicio = req.params.tipoServicio
+
+    const qryServicios = `
+    select 
+    s.id,
+    s.nombre, 
+    s.enlace,
+    s.descripcion as descripción_servicio, 
+    s.tipoServicioId,
+    ts.descripcion as descripción_tiposervicio
+from servicios s
+    inner join tipo_servicios ts
+            on ts.id = s.tipoServicioId
+           and ts.fecha_eliminado is null
+where s.fecha_eliminado is null
+and ts.id = :tipoServicio
+    `
+
+    try {
+        const servicios = await sqlQuery(qryServicios, {tipoServicio})
+        
+        res.status(200).json({exitoso: true, servicios})
+           
+    } catch (error) {
+        console.log(error)
+        res.status(500).json({exitoso: false})
+    }
+
 })
 
 

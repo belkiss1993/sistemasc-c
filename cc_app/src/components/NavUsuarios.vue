@@ -43,16 +43,17 @@
             <li class="nav-item dropdown">
               <a
                 class="nav-link dropdown-toggle"
-                href="#"
+                href="!#"
                 role="button"
                 data-toggle="dropdown"
                 aria-haspopup="true"
                 aria-expanded="false"
               >Servicios</a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                <router-link class="dropdown-item" to="/">Soluciones de Oficina</router-link>
-                <a class="dropdown-item" href="#">Soluciones de Informatica</a>
-                <a class="dropdown-item" href="#">Soporte Tecnico Especializado</a>
+                <router-link class="dropdown-item" to="/servicios/1">Soluciones de Oficina</router-link>
+                <router-link class="dropdown-item" to="/servicios/2">Soluciones de informática</router-link>
+                <router-link class="dropdown-item" to="/servicios/3">Soporte técnico Especializado</router-link>
+                <router-link class="dropdown-item" to="/servicios/4">Soluciones de Impresión </router-link>
               </div>
             </li>
 

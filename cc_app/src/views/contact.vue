@@ -37,10 +37,9 @@
       <div class="container">
         <form action="">
          
-          <h2>Contáctece con nosotros</h2>
-          <p  class="into" >Agredecenos el interés por contactarce con nosotros, si decea recibir más información sobre
-            nuestros productos o servicios, porfavor rellene el siguiente formulario y ensegida estaremos 
-            respondiendo.
+          <h2>Contáctese con nosotros</h2>
+          <p  class="into" >Agradécenos el interés por contactarse con nosotros, si desea recibir más información
+             sobre nuestros productos o servicios, por favor rellene el siguiente formulario y enseguida estaremos respondiendo.
           </p>
           <hr>
           <div class="row">
@@ -48,7 +47,7 @@
 
               <input type="text" name="nombre" placeholder="Ingrese su nombre" required>
 
-              <input type="text" name="correo" placeholder="Ingrese su Correo" required>
+              <input type="text" name="correo" placeholder="Ingrese su correo" required>
 
               <input type="text" name="telefono" placeholder="Ingrese su telefono" required>
 
@@ -64,7 +63,7 @@
                   <br>
                   <p>
                     <strong>
-                      ¿Deseas mas informacion?
+                      ¿Deseas más Información?
                     </strong>
                     Ponte en contacto con nosotros a través de este formulario.
 
