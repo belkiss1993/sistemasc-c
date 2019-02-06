@@ -94,12 +94,18 @@ export default new Router({
     {
     path:'/adm/usersadm',
     name:'useradm',
-    component:Usersadm
+    component:Usersadm,
+    // meta: {
+    //   requiresAuth: true
+    // }
     },
     {
     path:'/adm/createusers',
     name:'createuseradm',
-    component:CreateUsersadm
+    component:CreateUsersadm,
+    meta: {
+      requiresAuth: true
+    }
     },
   ]
 })

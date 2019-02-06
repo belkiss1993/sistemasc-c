@@ -15,7 +15,7 @@
       >
         <template slot="Acciones-header">
          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#crear-usuario-modal">
-          Crear usuario
+          Crear Usuario <i class="fas fa-user-plus"></i>
         </button>
         </template>
 

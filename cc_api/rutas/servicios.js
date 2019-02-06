@@ -67,18 +67,18 @@ router.post('/crear_servicio', async function(req, res){
         const nombre=req.body.nombre
         const descripcion=req.body.descripcion
         const tipoServicioId=req.body.tipoServicioId
-        const enlace=req.body.enlace
+        
 
         if(!nombre || !descripcion || !tipoServicioId ){
             return res.status(400).json({exitoso: false, error: 'campos incompletos'})
         }
 
         const qryCrearServicio=`
-            insert into servicios(nombre,descripcion,tipoServicioId,enlace)
-                values (:nombre,:descripcion,:tipoServicioId,:enlace)
+            insert into servicios(nombre,descripcion,tipoServicioId)
+                values (:nombre,:descripcion,:tipoServicioId)
         `
     
-       const params={nombre,descripcion, tipoServicioId,enlace}
+       const params={nombre,descripcion, tipoServicioId}
 
        const resultado = await sqlQuery(qryCrearServicio,params)
         

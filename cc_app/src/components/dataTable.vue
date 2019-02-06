@@ -1,10 +1,12 @@
 <template>
     <div>
+        <p></p>
         <form id="searchForm">
             <div class="form-row">
                 <div class="col-md-5">
                     <input class="form-control" type="text" id="Buscar" v-model="wordToSearch">
                 </div>
+                
                 <div class="col-md-4">
                     <button class="btn btn-outline-success" type="submit">Buscar</button>
                 </div>

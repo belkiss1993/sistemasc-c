@@ -85,7 +85,6 @@ export default {
   created() {
     this.obtenerTipoProductos();
     this.obtenerTipoSegmentos();
-
   },
   methods: {
     obtenerTipoProductos() {
@@ -94,9 +93,6 @@ export default {
         .then(response => {
           const data = response.data;
           this.tipo_producto = data.tipo_producto;
-
-
-          console.log("data_de_productos", this.tipo_producto);
         })
         .catch(error => {
           console.log("error de conexion", error);
@@ -109,8 +105,6 @@ export default {
         .then(response => {
           const data = response.data;
           this.tipo_segmentos = data.tipo_segmentos;
-
-          console.log("data_de_segmento", this.tipo_segmentos);
         })
         .catch(error => {
           console.log("error de conexion", error);
@@ -134,7 +128,7 @@ export default {
           this.error_msj = "Campo modelo es obligatorio";
         return;
       }
-this.error_msj=""
+      this.error_msj=""
 
       const data = this.Nuevoproducto;
       axios

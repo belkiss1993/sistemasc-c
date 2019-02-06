@@ -44,9 +44,15 @@ router.post('/eliminar', async function(req, res){
 }
 })
 
-router.post('/editar/:id', async function(req, res){
+router.post('/editar', async function(req, res){
 
     const id = req.body.id
+    const nombre = req.body.nombre
+    const modelo = req.body.modelo
+    const tipoProductoId = req.body.tipoProductoId
+    const enlace = req.body.enlace
+    const descripcion = req.body.descripcion
+    const tipoSegmentoId = req.body.tipoSegmentoId
 
     if(!valorValido(id)){
         return res.status(400).json({exitoso: false, error: 'id no valido'})
@@ -54,11 +60,16 @@ router.post('/editar/:id', async function(req, res){
     
     try {
         const qryEditar=
-        `Update Productos Set nombre = nombre, Modelo = Modelo, tipoProductoId = tipoProductoId, 
-        enlace = enlace, descripcion = descripcion, tipoSegmentoId = tipoSegmentoId
+        `Update Productos Set 
+            nombre = :nombre, 
+            Modelo = :modelo,
+            tipoProductoId = :tipoProductoId, 
+            enlace = :enlace,
+            descripcion = :descripcion,
+            tipoSegmentoId = :tipoSegmentoId
          Where id= :id`
 
-    const params={id}
+    const params={id,nombre,modelo,enlace,tipoProductoId,enlace,descripcion,tipoSegmentoId}
 
     const resultados = await sqlQuery(qryEditar, params)
         
