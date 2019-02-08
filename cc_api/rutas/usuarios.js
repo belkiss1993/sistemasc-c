@@ -2,20 +2,27 @@ const express = require('express')
 const router = express.Router()
 const {valorValido, sqlQuery, encrypt} = require('../config/general')
 
+
+
 router.get('/', async function(req, res){
 
 
 try {
     const qryCrearUsuario=
     `select 
-        u.id,
-    u.nombre ,
-    tu.descripcion
+    u.id,
+    -- concat(u.nombre, ' ', u.apellido) as nombre_completo,
+    u.nombre,
+    -- u.apellido,
+    tu.descripcion,
+    u.email,
+    u.telefono,
+    u.sexo
     from usuarios u
     inner join tipo_usuarios tu
-     on tu.id= u.tipoUsuarioId
-     and tu.fecha_eliminado is null
-     where u.fecha_eliminado is null`
+    on tu.id= u.tipoUsuarioId
+    and tu.fecha_eliminado is null
+    where u.fecha_eliminado is null`
 
 
 const resultados = await sqlQuery(qryCrearUsuario)
@@ -27,6 +34,54 @@ res.status(200).json({exitoso: true, resultados})
 res.status(500).json({exitoso: false})
 }
 
+})
+
+router.post('/editar', async function(req, res){
+
+    const id = req.body.id
+    const nombre = req.body.nombre
+    const telefono = req.body.telefono
+    const email = req.body.email
+    const sexo = req.body.sexo
+    const password = req.body.password
+    // const direccion = req.body.direccion
+    // const ciudad = req.body.ciudad
+    // const imagen = req.body.image
+    const tipoUsuarioId = 1; //Tipo usuario admin por defectos
+
+    if(!valorValido(id)){
+        return res.status(400).json({exitoso: false, error: 'id no valido'})
+    }
+
+    let passQry = ''
+    let passEncripted = ''
+
+    if(valorValido(password)) {
+        passQry = `password = :passEncripted,`
+        passEncripted = encrypt(password)
+    }
+    
+    try {
+        const qryEditar=
+        `Update usuarios Set 
+            nombre = :nombre, 
+            telefono = :telefono,
+            email = :email,
+            ${passQry}
+            sexo = :sexo,
+            tipoUsuarioId = :tipoUsuarioId
+         Where id= :id`
+
+    const params={id, nombre, telefono, email, sexo, tipoUsuarioId, passEncripted}
+
+    const resultados = await sqlQuery(qryEditar, params)
+        
+    res.status(200).json({exitoso: true})
+
+} catch (error) {
+     console.log(error)
+    res.status(500).json({exitoso: false})
+}
 })
 
 
@@ -114,6 +169,21 @@ router.post('/login', async function(req, res){
         res.status(500).json({exitoso: false})
     }
 }) 
+
+router.get('/tipo-usuarios', async function(req, res){
+    try {
+        const querytipo_usuarios =
+        'select id , descripcion from tipo_usuarios'
+
+        const tipo_usuarios = await sqlQuery(querytipo_usuarios)
+
+        res.status(200).json({exitoso: true, tipo_usuarios})
+
+    } catch (error) {
+        console.log(error)
+        res.status(500).json({exitoso: false})
+   }
+})
 
 router.post('/crear_usuario', async function(req, res){
 

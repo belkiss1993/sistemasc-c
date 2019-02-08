@@ -30,7 +30,41 @@ router.get('/', async function(req, res){
         console.log(error)
         res.status(500).json({exitoso: false})
     }
-})   
+}) 
+
+router.post('/editar', async function(req, res){
+
+    const id = req.body.id
+    const nombre = req.body.nombre
+    const enlace = req.body.enlace
+    const descripcion = req.body.descripcion
+    const tipoServicioId = req.body.tipoServicioId
+
+    if(!valorValido(id)){
+        return res.status(400).json({exitoso: false, error: 'id no valido'})
+    }
+    
+    try {
+        const qryEditar=
+        `Update servicios Set 
+            nombre = :nombre, 
+            enlace = :enlace,
+            descripcion = :descripcion,
+            tipoServicioId = :tipoServicioId
+         Where id= :id`
+
+    const params={id,nombre,tipoServicioId,enlace,descripcion,}
+
+    const resultados = await sqlQuery(qryEditar, params)
+        
+    res.status(200).json({exitoso: true, resultados})
+
+} catch (error) {
+     console.log(error)
+    res.status(500).json({exitoso: false})
+}
+})
+
 
 router.post('/eliminar', async function(req, res){
 

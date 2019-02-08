@@ -9,7 +9,7 @@
 
          <modal id="editar-producto-modal" titulo="Editar Producto">
              <template slot="contenido">
-                <editarProducts :producto="productoSeleccionado" />
+                <editarProducts @edit="refrescarModal" :producto="productoSeleccionado" />
              </template>
          </modal>
 
@@ -26,9 +26,9 @@
             </template>
             
             <template slot-scope="data" slot="Acciones">
-                <a href="#" class="" style="margin-right:5px" @click.prevent="abrirEditarModal(data.row)"><i class="fas fa-edit fa-2x"></i></a>
+                <a href="#" class="" style="margin-right:5px" @click.prevent="abrirEditarModal(data.row)">Editar</a>
                 
-                <a href="#" class="btn btn-danger" @click.prevent="eliminarProducto(data.row.id)"><i class="far fa-trash-alt fa-1x"></i></a>
+                <a href="#" class="btn btn-danger" @click.prevent="eliminarProducto(data.row.id)">Eliminar</a>
             </template>
         </dataTable>
     </div>
@@ -46,6 +46,7 @@ export default {
         return{
             productos: [],
             productoSeleccionado: {
+                id: '',
                 nombre: '',
                 descripcion: '',
                 modelo:'',
@@ -62,7 +63,8 @@ export default {
 
     methods:{
         obtenerproductos(){
-            axios.get('http://localhost:3000/productos/').then(response=>{
+            axios.get('http://localhost:3000/productos/').
+            then(response=>{
                 const data = response.data
                 if(data.exitoso){
                     this.productos=data.resultados
@@ -87,12 +89,13 @@ export default {
         },
 
         abrirEditarModal(producto){
+            this.productoSeleccionado.id = producto.id
             this.productoSeleccionado.nombre = producto.nombre
             this.productoSeleccionado.descripcion = producto.descripcion_producto
             this.productoSeleccionado.modelo = producto.modelo
             this.productoSeleccionado.enlace =  producto.enlace
             this.productoSeleccionado.tipoProductoId = producto.tipoProductoId
-            this.productoSeleccionado.segmentoId = producto.tipoSegmentoId
+            this.productoSeleccionado.tipoSegmentoId = producto.tipoSegmentoId
 
             $('#editar-producto-modal').modal('toggle')
         },
@@ -108,6 +111,10 @@ export default {
 
         refrescarModal(){
             $('#crear-producto-modal').modal('toggle')
+            this.obtenerproductos()
+        },
+        refrescarModal(){
+            $('#editar-producto-modal').modal('toggle')
             this.obtenerproductos()
         }
         

@@ -8,12 +8,9 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Inicio<span class="sr-only">(current)</span></a>
-      </li>
      
       <li class="nav-item dropdown">
-        <router-link class="nav-link"  to="/adm/products" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <router-link class="nav-link"  to="/adm/products" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Productos
         </router-link>
         <!-- <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -26,7 +23,7 @@
     
 
       <li class="nav-item dropdown">
-         <router-link class="nav-link" to="/adm/services" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+         <router-link class="nav-link" to="/adm/services" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Servicios
         </router-link>
         <!-- <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -36,7 +33,7 @@
       </li>
 
       <li class="nav-item dropdown">
-           <router-link class="nav-link"  to="/adm/usersadm" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+           <router-link class="nav-link" to="/adm/usersadm" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Usuarios
         </router-link> 
           <!-- <div class="dropdown-menu" aria-labelledby="navbarDropdown">  

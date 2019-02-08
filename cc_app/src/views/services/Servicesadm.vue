@@ -6,6 +6,12 @@
       </template>
     </modal>
 
+       <modal id="editar-servicio-modal" titulo="Editar Servicio">
+             <template slot="contenido">
+                <editarServices :servicio="servicioSeleccionado" />
+             </template>
+         </modal>
+
     <dataTable 
       :dataSource="servicios" 
       :excludedColumns="['tipoServicioId', 'id']" 
@@ -19,7 +25,7 @@
       </template>
     
       <template slot-scope="data" slot="Acciones">
-        <a href="#" class="" style="margin-right:5px">Editar</a>
+          <a href="#" class="" style="margin-right:5px" @click.prevent="abrirEditarModal(data.row)">Editar</a>
  
         <a href="#" class="btn btn-danger" @click.prevent="eliminarServicio(data.row.id)">Eliminar</a>
       </template>
@@ -32,12 +38,20 @@
 import axios from "axios";
 import modal from '@/components/Modal'
 const createServicesAdm = ()=> import('@/views/services/CreateServicesadm')
+const editarServices= ()=> import('@/views/services/EditarServicios')
 const dataTable = () => import("@/components/dataTable");
 
 export default {
   data() {
     return {
-      servicios: []
+      servicios: [],
+        servicioSeleccionado: {
+                nombre: '',
+                descripcion: '',
+                enlace:'',
+                tipoServicioId:'',
+              
+            }
     };
   },
   //se ejecuta automaticamente cuando se crea la vista
@@ -77,6 +91,23 @@ export default {
           console.log(error);
       })
     },
+      abrirEditarModal(servicio){
+            this.servicioSeleccionado.nombre = servicio.nombre
+            this.servicioSeleccionado.descripcion = servicio.descripción_servicio
+            this.servicioSeleccionado.enlace =  servicio.enlace
+            this.servicioSeleccionado.tipoServicioId = servicio.tipoServicioId
+     
+
+            $('#editar-servicio-modal').modal('toggle')
+        },
+          editarServicio(id){
+            
+            axios.post("http://localhost:3000/servicios/editar"),{id}.then(response=>{
+                this.obtenerservicios()
+            }).catch(error=>{
+                console.log(error)
+            })
+        },
 
     refrescarModal(){
       $('#crear-servicio-modal').modal('toggle')
@@ -87,7 +118,8 @@ export default {
   components: {
     dataTable,
     modal,
-    createServicesAdm
+    createServicesAdm,
+    editarServices
   }
 }
 </script>

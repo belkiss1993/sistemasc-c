@@ -31,6 +31,10 @@
         >{{tipoServicio.descripcion}}</option>
       </select>
     </div>
+    <div class="form-group">
+      <label for="exampleFormControlEnlace">Enlace</label>
+      <input class="form-control" type="text" id=exampleFormControlEnlace v-model="NuevoServicio.enlace">
+    </div>
 
     <div class="alert alert-danger" role="alert" v-show="error_msj.length > 0">{{error_msj}}</div>
 

@@ -85,6 +85,7 @@ export default {
   created() {
     this.obtenerTipoProductos();
     this.obtenerTipoSegmentos();
+   
   },
   methods: {
     obtenerTipoProductos() {
@@ -135,7 +136,7 @@ export default {
         .post("http://localhost:3000/productos/crear_producto", data)
         .then(response => {
           btnGuardar.disabled = false;
-           this.Nuevoproducto.nombre = '';
+          this.Nuevoproducto.nombre = '';
           this.Nuevoproducto.descripcion = '';
           this.Nuevoproducto.modelo = '';
           this.$emit('created')
@@ -144,6 +145,7 @@ export default {
          btnGuardar.disabled = false;
           console.log(error);
         });
+
     }
   }
 };

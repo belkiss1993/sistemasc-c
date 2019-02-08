@@ -38,14 +38,14 @@
         <option
           v-for=" tipoProducto in tipo_producto"
           :key="tipoProducto.id"
-          :value="tipoProducto.id">
-          {{tipoProducto.descripcion}}</option>
+          :value="tipoProducto.id"
+        >{{tipoProducto.descripcion}}</option>
       </select>
     </div>
 
     <div class="form-group">
       <label for="exampleFormControlSegment">Tipo de Segmento</label>
-      <select class="form-control" v-model="producto.segmentoId">
+      <select class="form-control" v-model="producto.tipoSegmentoId">
         <option
           v-for=" tipoSegmento in tipo_segmentos"
           :key="tipoSegmento.id"
@@ -56,58 +56,106 @@
 
     <div class="form-group">
       <label for="exampleFormControlEnlace">Enlace</label>
-      <input class="form-control" type="text" id=exampleFormControlEnlace v-model="producto.enlace">
+      <input
+        class="form-control"
+        type="text"
+        id="exampleFormControlEnlace"
+        v-model="producto.enlace"
+      >
     </div>
 
     <div class="alert alert-danger" role="alert" v-show="error_msj.length > 0">{{error_msj}}</div>
 
     <div class="form-group">
-      <button id="guardar" type="submit" class="btn btn-primary" @click.prevent="guardarProducto">Guardar</button>
+      <button
+        id="guardar"
+        type="submit"
+        class="btn btn-primary"
+        @click.prevent="editarProducto"
+      >Guardar</button>
     </div>
   </form>
 </template>
 
 <script>
-import axios from "axios"
+import axios from "axios";
 
 export default {
-    props: ['producto'],
+  props: ["producto"],
 
-    data(){
-        return {
-            tipo_segmentos:[],
-            tipo_producto: [],
-            error_msj: ''
-        }
-    },
-    created() {
-        this.obtenerTipoProductos();
-        this.obtenerTipoSegmentos();
-    },
-    methods: {
-        obtenerTipoProductos() {
-            axios.get("http://localhost:3000/productos/tipo_producto").then(response => {
-                    const data = response.data;
-                    this.tipo_producto = data.tipo_producto;
-            })
-            .catch(error => {
-            console.log("error de conexion", error);
-            });
-    },
-    obtenerTipoSegmentos() {
-         axios
-        .get("http://localhost:3000/productos/tipo_segmentos")
+  data() {
+    return {
+      tipo_segmentos: [],
+      tipo_producto: [],
+      error_msj: ""
+    };
+  },
+  created() {
+    this.obtenerTipoProductos();
+    this.obtenerTipoSegmentos();
+  },
+  methods: {
+    obtenerTipoProductos() {
+      axios
+        .get("http://localhost:3000/productos/tipo_producto")
         .then(response => {
           const data = response.data;
-          this.tipo_segmentos = data.tipo_segmentos;
+          this.tipo_producto = data.tipo_producto;
         })
         .catch(error => {
           console.log("error de conexion", error);
         });
-    }
-            
-}
-    
-}
+    },
+    obtenerTipoSegmentos() {
+      axios.get("http://localhost:3000/productos/tipo_segmentos").then(response => {
+        const data = response.data;
+        this.tipo_segmentos = data.tipo_segmentos;
+      }).catch(error => {
+        console.log("error de conexion", error);
+      });
+    },
+    editarProducto(){
+      const btnGuardar = document.querySelector("#guardar");
+       btnGuardar.disabled = true;
+       
+      if (!this.producto.nombre) {
+        this.error_msj = "Campo nombre es obligatorio";
+        return;
+      }
+      
+      if (!this.producto.descripcion) {
+        this.error_msj = "Campo nombre es obligatorio";
+        return;
+      }
+       if (!this.producto.modelo) {
+        this.error_msj = "Campo nombre es obligatorio";
+        return;
+      }
+       if (!this.producto.tipoProductoId) {
+        this.error_msj = "Campo nombre es obligatorio";
+        return;
+      }
+       if (!this.producto.segmentoId) {
+        this.error_msj = "Campo nombre es obligatorio";
+        return;
+      }
+     
+       this.error_msj = "";
 
+         const data = this.producto;
+      axios
+        .post("http://localhost:3000/productos/editar", data)
+        .then(response => {
+          btnGuardar.disabled = false;
+
+          this.$emit('edit')
+        })
+       .catch(error => {
+          btnGuardar.disabled = false;
+          console.log(error);
+        });
+  
+    }
+  }
+}
 </script>

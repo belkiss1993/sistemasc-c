@@ -3,9 +3,15 @@
     <div>
       <modal id="crear-usuario-modal">
         <template slot="contenido">
-          <createUsersadm @usuariocreado="refrescarModal"/>
+          <createUsersadm @usuariocreado="refrescarModal('crear-usuario-modal')"/>
         </template>
       </modal>
+
+       <modal id="editar-usuario-modal" titulo="Editar Usuario">
+             <template slot="contenido">
+                <editarUser @editado="refrescarModal('editar-usuario-modal')" :usuario="usuarioSeleccionado" />
+             </template>
+         </modal>
 
       <dataTable
         :dataSource="usuarios"
@@ -15,12 +21,12 @@
       >
         <template slot="Acciones-header">
          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#crear-usuario-modal">
-          Crear Usuario <i class="fas fa-user-plus"></i>
+          Crear Usuario 
         </button>
         </template>
 
         <template slot-scope="data" slot="Acciones">
-          <a href="#" class style="margin-right:5px">Editar</a>
+            <a href="#" class="" style="margin-right:5px" @click.prevent="abrirEditarModal(data.row)">Editar</a>
           <a href="#" class="btn btn-danger" @click.prevent="eliminarUsuario(data.row.id)">Eliminar</a>
         </template>
       </dataTable>
@@ -32,12 +38,23 @@
 import axios from "axios";
 import modal from "@/components/Modal";
 const dataTable = () => import("@/components/dataTable");
+const editarUser = ()=> import('@/views/user/EditarUsuarios')
 const createUsersadm = () =>import("@/views/user/CreateUsersadm")
 
 export default {
   data() {
     return {
       usuarios: [],
+      usuarioSeleccionado: {
+        id: '',
+        nombre:'', 
+        telefono:'', 
+        email:'', 
+        sexo:'',
+        //  password:'', 
+        //  imagen:'', 
+          tipoUsuarioId:''
+      }
       
       
     };
@@ -68,7 +85,7 @@ export default {
         return;
       }
       axios
-        .post("http://localhost:3000/usuarios/eliminar", { id })
+        .post("http://localhost:3000/usuarios/eliminar", {id})
         .then(response => {
           this.obtenerusuarios();
         })
@@ -76,15 +93,29 @@ export default {
           console.log(error);
         });
     },
-    refrescarModal() {
-      $("#crear-usuario-modal").modal('toggle')
+
+    abrirEditarModal(usuario){
+      this.usuarioSeleccionado.id = usuario.id
+      this.usuarioSeleccionado.nombre = usuario.nombre
+      this.usuarioSeleccionado.telefono = usuario.telefono
+      this.usuarioSeleccionado.email = usuario.email
+      this.usuarioSeleccionado.sexo =  usuario.sexo
+      this.usuarioSeleccionado.tipoUsuarioId = usuario.tipoUsuarioId
+      
+
+      $('#editar-usuario-modal').modal('toggle')
+    },
+
+    refrescarModal(idModal) {
+      $("#"+idModal).modal('toggle')
       this.obtenerusuarios();
     }
   },
   components: {
     dataTable,
     modal,
-    createUsersadm
+    createUsersadm,
+    editarUser
   }
 };
 </script>

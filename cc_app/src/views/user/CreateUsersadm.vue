@@ -5,7 +5,7 @@
       <input
         type="text"
         class="form-control"
-        id="UserName"
+        id="editUserName"
         aria-describedby="UserName"
         placeholder="Nombre"
         v-model="NuevoUsuario.nombre"
@@ -16,7 +16,7 @@
       <input
         type="text"
         class="form-control"
-        id="UserLatsname"
+        id="editUserLatsname"
         aria-describedby="UserLastname"
         placeholder="Apellido"
         v-model="NuevoUsuario.apellido"
@@ -47,12 +47,12 @@
 
 
 
-  <div class="row">
+  <!-- <div class="row">
    <div class="form-group col-md-8">
      <label for="inputAddress">Dirección</label>
      <input v-model="NuevoUsuario.direccion" type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
    </div>
-  </div>
+  </div> -->
 
       <div class="form-group">
       <label for="exampleInputUser">Correo</label>
@@ -71,11 +71,12 @@
         class="form-control"
         id="UserPassword"
         aria-describedby="UserPassword"
-        placeholder="Contraeña"
+        placeholder="C
+        ontraeña"
         v-model="NuevoUsuario.password" />
        <small id="passwordHelpInline" class="text-muted">Mas de 6 caracteres.</small>
         <div class="alert alert-danger" role="alert" v-show="error_msj.length > 0">{{error_msj}}</div>
-
+ 
     <div class="form-group">
       <button id="guardar" type="submit" class="btn btn-primary" @click.prevent="guardarUsuario">Guardar</button>
     </div>
@@ -95,19 +96,33 @@ export default {
   },
   methods:{
     guardarUsuario(){
-
       if(this.NuevoUsuario.password.length < 6){
+        this.error_msj = "La contraseña debe ser mas de 6 caracteres"
         return 
       }
+
       const data=this.NuevoUsuario
+      
       axios.post('http://localhost:3000/usuarios/crear_usuario', data)
       .then(response =>{
-      
-         this.$emit("usuariocreado")
+
+        if(response.data.exitoso){
+          this.NuevoUsuario.nomnbre = ''
+          this.NuevoUsuario.apellido = ''
+          this.NuevoUsuario.sexo = ''
+          this.NuevoUsuario.telefono = ''
+          this.NuevoUsuario.direccion = ''
+          this.NuevoUsuario.email = ''
+          this.NuevoUsuario.password = ''
+          this.error_msj = ''
+
+          this.$emit("usuariocreado")
+        }
+
       }).catch(error=> {
         console.log(error)
       })
-      
+
     }
   }
 }
