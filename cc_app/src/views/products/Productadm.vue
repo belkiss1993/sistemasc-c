@@ -3,13 +3,13 @@
 
          <modal id="crear-producto-modal">
              <template slot="contenido">
-               <createProductsAdm @created="refrescarModal" />
+               <createProductsAdm @created="refrescarModal('crear-producto-modal')" />
              </template>
          </modal>
 
          <modal id="editar-producto-modal" titulo="Editar Producto">
              <template slot="contenido">
-                <editarProducts @edit="refrescarModal" :producto="productoSeleccionado" />
+                <editarProducts @edit="refrescarModal('editar-producto-modal')" :producto="productoSeleccionado" />
              </template>
          </modal>
 
@@ -21,14 +21,14 @@
 
             <template slot="Acciones-header">
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#crear-producto-modal">
-                Crear Producto
+              <i class="fa fa-plus-square" aria-hidden="true"></i>  Crear Producto
             </button>
             </template>
             
             <template slot-scope="data" slot="Acciones">
-                <a href="#" class="" style="margin-right:5px" @click.prevent="abrirEditarModal(data.row)">Editar</a>
+                <a href="#" class="" style="margin-right:5px" @click.prevent="abrirEditarModal(data.row)"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Editar</a>
                 
-                <a href="#" class="btn btn-danger" @click.prevent="eliminarProducto(data.row.id)">Eliminar</a>
+                <a href="#" class="btn btn-danger" @click.prevent="eliminarProducto(data.row.id)"><i class="fa fa-times" aria-hidden="true"></i>Eliminar</a>
             </template>
         </dataTable>
     </div>
@@ -109,12 +109,8 @@ export default {
             })
         },
 
-        refrescarModal(){
-            $('#crear-producto-modal').modal('toggle')
-            this.obtenerproductos()
-        },
-        refrescarModal(){
-            $('#editar-producto-modal').modal('toggle')
+        refrescarModal(idModal){
+            $('#'+idModal).modal('toggle')
             this.obtenerproductos()
         }
         

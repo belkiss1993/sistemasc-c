@@ -3,7 +3,7 @@
   
   <div class="row">
     <div v-for="producto in productos" :key="producto.id" class="card col-md-4">
-      <img class="card-img-top" src="@/img/canon1.png" alt="Card image cap">
+      <img class="card-img-top" :src="imageURL(producto.id)" alt="Card image cap">
       <div class="card-body">
         <center><h5 class="card-title">{{producto.nombre}} {{producto.modelo}}</h5></center>
         <p class="card-text">
@@ -47,6 +47,10 @@ export default {
         .catch(error => {
           console.log(error);
         });
+    },
+
+    imageURL(id){
+      return this.serverUrl+'/files/images/productos/'+id+'.jpg'
     }
   },
   watch: {

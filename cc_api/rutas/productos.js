@@ -1,7 +1,21 @@
 const express = require('express')
 const router = express.Router()
 const {sqlQuery, valorValido} = require('../config/general')
+const multer = require('multer')
 
+const storage = multer.diskStorage({
+    destination: function(req, file, callback){
+        const tipo = req.body.imageType
+        callback(null, './files/images/'+tipo)
+    },
+    filename: function (req, file, cb) {
+        cb(null, req.body.id + '.jpg')
+    }
+})
+
+const fileUploader = multer({storage, limits: {
+    fileSize: 1024 * 1024*  2 // 2 MB
+}})
 
 router.get('/tipo_producto', async function(req, res){
     try {
@@ -16,7 +30,6 @@ router.get('/tipo_producto', async function(req, res){
        res.status(500).json({exitoso: false})
    }
 })
-
 
 router.post('/eliminar', async function(req, res){
 
@@ -44,7 +57,7 @@ router.post('/eliminar', async function(req, res){
 }
 })
 
-router.post('/editar', async function(req, res){
+router.post('/editar', fileUploader.single('imagen'), async function(req, res){
 
     const id = req.body.id
     const nombre = req.body.nombre
@@ -113,9 +126,7 @@ try {
     console.log(error)
     res.status(500).json({exitoso: false})
 }
-}) 
-
-
+})
 
 // crear productos
 router.post('/crear_producto', async function(req, res){

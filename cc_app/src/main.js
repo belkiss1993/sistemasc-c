@@ -51,6 +51,14 @@ router.beforeEach( (to, from, next)=>{
     next()
 })
 
+Vue.mixin({
+  data(){
+    return{
+      serverUrl:'http://localhost:3000'
+    }
+  }
+})
+
 new Vue({
   router,
   store,

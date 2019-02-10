@@ -21,13 +21,14 @@
       >
         <template slot="Acciones-header">
          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#crear-usuario-modal">
-          Crear Usuario 
+          <i class="fa fa-user-plus" aria-hidden="true"></i> Crear Usuario 
         </button>
         </template>
 
         <template slot-scope="data" slot="Acciones">
-            <a href="#" class="" style="margin-right:5px" @click.prevent="abrirEditarModal(data.row)">Editar</a>
-          <a href="#" class="btn btn-danger" @click.prevent="eliminarUsuario(data.row.id)">Eliminar</a>
+            <a href="#" class="" style="margin-right:5px" 
+            @click.prevent="abrirEditarModal(data.row)"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Editar</a>
+          <a href="#" class="btn btn-danger" @click.prevent="eliminarUsuario(data.row.id)"> <i class="fa fa-user-times" aria-hidden="true"></i>Eliminar</a>
         </template>
       </dataTable>
     </div>

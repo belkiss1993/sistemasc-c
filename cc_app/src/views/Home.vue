@@ -224,6 +224,12 @@
     <div class="row center">
       <img src="marcas.jpg" class="img-fluid imgcenter" alt srcset>
     </div>
+    
+    <center>&#169; 2019 Sistemas C&C Honduras S de RL, Todos los derechos reservados</center>
+  <p>
+
+  </p>
+  
   </div>
 </template>
 

@@ -2,12 +2,25 @@
   <div>
     
     <!-- <h4>Dirección:</h4> -->
+     <div class="col">
     <p class="text-justify "> 
       Sistemas C&C, S.A. de C.V.
       Edif. Plaza Azul, 3er Nivel, Local No. 37
       Col. Lomas del Guijarro Sur, TGU
     </p>
     <p>PBX: (+504) 2239 3800</p>
+    <hr>
+
+      <div class="col">
+    <h5>Horarios de Atención</h5>
+    <div>
+    <p>LUNES A VIERNES</p>
+    <p>8:00 AM A 5:00 PM</p>
+    </div>
+  </div>
+  </div>
+
+   
     <iframe
       src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d61504.59770092364!2d-88.0222208!3d15.536128!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8f6fa32927a10399%3A0x85b5c88126b60ba3!2sEDIFICIO+PLAZA+AZUL%2C+Calle+Paris%2C+Tegucigalpa!5e0!3m2!1ses!2shn!4v1548301513576" 
       width="1115"

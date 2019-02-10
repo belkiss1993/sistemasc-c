@@ -33,7 +33,7 @@
     </div>
     <div class="form-group">
       <label for="exampleFormControlEnlace">Enlace</label>
-      <input class="form-control" type="text" id=exampleFormControlEnlace v-model="NuevoServicio.enlace">
+      <input class="form-control" type="text" id="Enlace" v-model="NuevoServicio.enlace">
     </div>
 
     <div class="alert alert-danger" role="alert" v-show="error_msj.length > 0">{{error_msj}}</div>
@@ -87,6 +87,12 @@ export default {
       }
       this.error_msj = "";
 
+       if (!this.NuevoServicio.tipoServicioId) {
+        this.error_msj = "Campo descripcion es obligatorio";
+        return;
+      }
+      this.error_msj = "";
+
       const data = this.NuevoServicio;
       axios
         .post("http://localhost:3000/servicios/crear_servicio", data)
@@ -94,6 +100,8 @@ export default {
           btnGuardar.disabled = false;
           this.NuevoServicio.nombre = '';
           this.NuevoServicio.descripcion = '';
+          this.NuevoServicio.tipoServicioId= '';
+          this.NuevoServicio.enlace= '';
           
           this.$emit('created')
         })

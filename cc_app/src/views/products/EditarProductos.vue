@@ -31,7 +31,6 @@
         placeholder="Modelo"
       >
     </div>
-
     <div class="form-group">
       <label for="exampleFormControlType">Tipo de Producto</label>
       <select class="form-control" v-model="producto.tipoProductoId">
@@ -42,7 +41,6 @@
         >{{tipoProducto.descripcion}}</option>
       </select>
     </div>
-
     <div class="form-group">
       <label for="exampleFormControlSegment">Tipo de Segmento</label>
       <select class="form-control" v-model="producto.tipoSegmentoId">
@@ -52,6 +50,16 @@
           :value="tipoSegmento.id"
         >{{tipoSegmento.descripcion}}</option>
       </select>
+    </div>
+    
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
+      </div>
+      <div class="custom-file">
+        <input type="file" class="custom-file-input" id="editarProducoImagen" aria-describedby="inputGroupFileAddon01">
+        <label class="custom-file-label" for="editarProducoImagen">Choose file</label>
+      </div>
     </div>
 
     <div class="form-group">
@@ -93,6 +101,15 @@ export default {
   created() {
     this.obtenerTipoProductos();
     this.obtenerTipoSegmentos();
+  },
+
+  mounted(){
+    $('.custom-file-input').on('change',function(){
+      //get the file name
+      var fileName = $(this).val();
+      //replace the "Choose a file" label
+      $(this).next('.custom-file-label').html(fileName);
+    })
   },
   methods: {
     obtenerTipoProductos() {
@@ -139,13 +156,30 @@ export default {
         this.error_msj = "Campo nombre es obligatorio";
         return;
       }
-     
-       this.error_msj = "";
 
-         const data = this.producto;
-      axios
-        .post("http://localhost:3000/productos/editar", data)
-        .then(response => {
+      const imagen = document.getElementById("editarProducoImagen").files[0]
+
+      this.error_msj = "";
+      const data = new FormData();
+
+      for(const attr in this.producto){
+        data.append(attr, this.producto[attr])
+      }
+
+      data.append('imageType', 'productos')
+
+      data.append('imagen', imagen)
+
+      console.log(data.get('imageType'))
+
+      axios.post(
+        "http://localhost:3000/productos/editar", 
+        data, {
+          headers: {
+            'accept': 'application/json',
+            'Content-Type': `multipart/form-data; boundary=${data._boundary}`
+          }
+        }).then(response => {
           btnGuardar.disabled = false;
 
           this.$emit('edit')

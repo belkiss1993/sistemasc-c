@@ -34,13 +34,13 @@
 
      <div class="form-group">
       <label for="exampleFormControlEnlace">Enlace</label>
-      <input class="form-control" type="text" id=exampleFormControlEnlace v-model="servicio.enlace">
+      <input class="form-control" type="text" id="exampleFormControlEnlace" v-model="servicio.enlace">
     </div>
 
     <div class="alert alert-danger" role="alert" v-show="error_msj.length > 0">{{error_msj}}</div>
 
     <div class="form-group">
-      <button id="guardar" type="submit" class="btn btn-primary" @click.prevent="EditarServicios">Guardar</button>
+      <button id="guardar" type="submit" class="btn btn-primary" @click.prevent="editarServicio">Guardar</button>
     </div>
   </form>
 </template>
@@ -70,6 +70,41 @@ export default {
         }).catch(error => {
           console.log("error de conexion", error);
         });
+    },
+    
+    editarServicio(){
+      const btnGuardar = document.querySelector("#guardar");
+       btnGuardar.disabled = true;
+       
+      if (!this.servicio.nombre) {
+        this.error_msj = "Campo nombre es obligatorio";
+        return;
+      }
+      
+      if (!this.servicio.descripcion) {
+        this.error_msj = "Campo nombre es obligatorio";
+        return;
+      }
+       if (!this.servicio.tipoServicioId) {
+        this.error_msj = "Campo nombre es obligatorio";
+        return;
+      }
+     
+       this.error_msj = "";
+
+         const data = this.servicio;
+      axios
+        .post("http://localhost:3000/servicios/editar", data)
+        .then(response => {
+          btnGuardar.disabled = false;
+
+          this.$emit('edit')
+        })
+       .catch(error => {
+          btnGuardar.disabled = false;
+          console.log(error);
+        });
+  
     }
 }
     

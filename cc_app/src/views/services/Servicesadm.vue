@@ -2,13 +2,13 @@
   <div>
     <modal id="crear-servicio-modal">
       <template slot="contenido">
-        <createServicesAdm @created="refrescarModal" />
+        <createServicesAdm @created="refrescarModal('crear-servicio-modal')" />
       </template>
     </modal>
 
        <modal id="editar-servicio-modal" titulo="Editar Servicio">
              <template slot="contenido">
-                <editarServices :servicio="servicioSeleccionado" />
+                <editarServices @edit="refrescarModal('editar-servicio-modal')" :servicio="servicioSeleccionado" />
              </template>
          </modal>
 
@@ -20,14 +20,14 @@
 
       <template slot="Acciones-header">
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#crear-servicio-modal">
-          Crear Servicio
+        <i class="fa fa-plus-square" aria-hidden="true"></i>  Crear Servicio
         </button>
       </template>
     
       <template slot-scope="data" slot="Acciones">
-          <a href="#" class="" style="margin-right:5px" @click.prevent="abrirEditarModal(data.row)">Editar</a>
+          <a href="#" class="" style="margin-right:5px" @click.prevent="abrirEditarModal(data.row)"> <i class="fa fa-pencil-square-o" aria-hidden="true"></i>Editar</a>
  
-        <a href="#" class="btn btn-danger" @click.prevent="eliminarServicio(data.row.id)">Eliminar</a>
+        <a href="#" class="btn btn-danger" @click.prevent="eliminarServicio(data.row.id)"><i class="fa fa-times" aria-hidden="true"></i>Eliminar</a>
       </template>
     </dataTable>
   </div>
@@ -38,7 +38,7 @@
 import axios from "axios";
 import modal from '@/components/Modal'
 const createServicesAdm = ()=> import('@/views/services/CreateServicesadm')
-const editarServices= ()=> import('@/views/services/EditarServicios')
+const editarServices= ()=> import('@/views/services/EditarServicios.vue')
 const dataTable = () => import("@/components/dataTable");
 
 export default {
@@ -92,10 +92,11 @@ export default {
       })
     },
       abrirEditarModal(servicio){
-            this.servicioSeleccionado.nombre = servicio.nombre
-            this.servicioSeleccionado.descripcion = servicio.descripción_servicio
-            this.servicioSeleccionado.enlace =  servicio.enlace
-            this.servicioSeleccionado.tipoServicioId = servicio.tipoServicioId
+          this.servicioSeleccionado.id = servicio.id
+          this.servicioSeleccionado.nombre = servicio.nombre
+          this.servicioSeleccionado.descripcion = servicio.descripción_servicio
+          this.servicioSeleccionado.enlace =  servicio.enlace
+          this.servicioSeleccionado.tipoServicioId = servicio.tipoServicioId
      
 
             $('#editar-servicio-modal').modal('toggle')
@@ -109,8 +110,8 @@ export default {
             })
         },
 
-    refrescarModal(){
-      $('#crear-servicio-modal').modal('toggle')
+    refrescarModal(idModal){
+      $('#'+idModal).modal('toggle')
       this.obtenerservicios()
     }
   },

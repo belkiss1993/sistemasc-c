@@ -155,6 +155,6 @@ export default {
 }
 
 #searchForm {
-    margin-bottom: 1.5em;
+    margin-bottom: 1.4em;
 }
 </style>
