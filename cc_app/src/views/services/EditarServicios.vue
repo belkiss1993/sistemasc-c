@@ -32,7 +32,17 @@
       </select>
     </div>
 
-     <div class="form-group">
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
+      </div>
+      <div class="custom-file">
+        <input type="file" class="custom-file-input" id="editarServicioImagen" aria-describedby="inputGroupFileAddon01">
+        <label class="custom-file-label" for="editarServicioImagen">Choose file</label>
+      </div>
+    </div>
+
+    <div class="form-group">
       <label for="exampleFormControlEnlace">Enlace</label>
       <input class="form-control" type="text" id="exampleFormControlEnlace" v-model="servicio.enlace">
     </div>
@@ -59,8 +69,15 @@ export default {
         }
     },
     created() {
-        this.obtenerTipoServicios();
-       
+      this.obtenerTipoServicios();
+    },
+    mounted(){
+      $('.custom-file-input').on('change',function(){
+        //get the file name
+        var fileName = $(this).val();
+        //replace the "Choose a file" label
+        $(this).next('.custom-file-label').html(fileName);
+      })
     },
     methods: {
       obtenerTipoServicios() {
@@ -90,17 +107,33 @@ export default {
         return;
       }
      
-       this.error_msj = "";
+      this.error_msj = "";
 
-         const data = this.servicio;
-      axios
-        .post("http://localhost:3000/servicios/editar", data)
-        .then(response => {
+      const data = new FormData()
+
+      for(let attr in this.servicio){
+        data.append(attr, this.servicio[attr])
+      }
+
+      const imagen = document.getElementById('editarServicioImagen').files[0]
+
+      data.append('imageType', 'servicios')
+      data.append('imagen', imagen)
+
+      axios.post(
+        "http://localhost:3000/servicios/editar",
+        data,
+        {
+          headers: {
+            'accept': 'application/json',
+            'Content-Type': `multipart/form-data; boundary=${data._boundary}`
+          }
+        }).then(response => {
+          
           btnGuardar.disabled = false;
-
           this.$emit('edit')
-        })
-       .catch(error => {
+
+        }).catch(error => {
           btnGuardar.disabled = false;
           console.log(error);
         });

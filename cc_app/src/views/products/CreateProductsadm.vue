@@ -54,6 +54,17 @@
       </select>
     </div>
 
+    <label>Imagen</label>
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text">Media</span>
+      </div>
+      <div class="custom-file">
+        <input type="file" class="custom-file-input" id="guardarProductoImagen" aria-describedby="inputGroupFileAddon01">
+        <label class="custom-file-label" for="guardarProductoImagen">Choose file</label>
+      </div>
+    </div>
+
     <div class="form-group">
       <label for="exampleFormControlEnlace">Enlace</label>
       <input class="form-control" type="text" id=exampleFormControlEnlace v-model="Nuevoproducto.enlace">
@@ -77,7 +88,9 @@ export default {
       tipoProductoSeleccionado: "",
       tipo_segmentos: [],
       tipoSegmentoSeleccionado: "",
-      Nuevoproducto: {},
+      Nuevoproducto: {
+        enlace: ''
+      },
       error_msj: ""
       
     };
@@ -87,6 +100,16 @@ export default {
     this.obtenerTipoSegmentos();
    
   },
+
+  mounted(){
+    $('.custom-file-input').on('change',function(){
+      //get the file name
+      var fileName = $(this).val();
+      //replace the "Choose a file" label
+      $(this).next('.custom-file-label').html(fileName);
+    })
+  },
+
   methods: {
     obtenerTipoProductos() {
       axios
@@ -111,6 +134,7 @@ export default {
           console.log("error de conexion", error);
         });
     },
+
     guardarProducto() {
       
       const btnGuardar = document.querySelector("#guardar")
@@ -130,11 +154,26 @@ export default {
         return;
       }
       this.error_msj=""
+    
+      const data = new FormData()
+      
+      for(let attr in this.Nuevoproducto){
+        data.append(attr, this.Nuevoproducto[attr])
+      }
+      const imagen = document.getElementById("guardarProductoImagen").files[0]
 
-      const data = this.Nuevoproducto;
-      axios
-        .post("http://localhost:3000/productos/crear_producto", data)
-        .then(response => {
+      data.append('imageType', 'productos')
+      data.append('imagen', imagen)
+
+      axios.post(
+        "http://localhost:3000/productos/crear_producto",
+        data,
+        {
+          headers: {
+            'accept': 'application/json',
+            'Content-Type': `multipart/form-data; boundary=${data._boundary}`
+          }
+        }).then(response => {
           btnGuardar.disabled = false;
           this.Nuevoproducto.nombre = '';
           this.Nuevoproducto.descripcion = '';

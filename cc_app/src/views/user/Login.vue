@@ -43,10 +43,10 @@
                 </div>
             </form>
             <div class="dropdown-divider"></div>
-             <a class="dropdown-item" href="#">
+             <!-- <a class="dropdown-item" href="#">
                     ¿Nuevo por aquí? Regístrate</a>
               <a class="dropdown-item" href="#">
-                    ¿Se te olvidó tu contraseña?</a>
+                    ¿Se te olvidó tu contraseña?</a> -->
 
              </div>
         

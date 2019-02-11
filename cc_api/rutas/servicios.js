@@ -1,7 +1,28 @@
 const express = require('express')
 const router = express.Router()
 const {sqlQuery, valorValido} = require('../config/general')
+const multer = require('multer')
+const fs = require('fs')
 
+const storage = multer.diskStorage({
+    destination: function(req, file, callback){
+        const tipo = req.body.imageType
+        callback(null, './files/images/'+tipo)
+    },
+    filename: async function (req, file, cb) {
+        let name = req.body.id
+        
+        if(!name){
+            name = Date.now()
+        }
+
+        cb(null, name + '.jpg')
+    }
+})
+
+const fileUploader = multer({storage, limits: {
+    fileSize: 1024 * 1024*  2 // 2 MB
+}})
 
 router.get('/', async function(req, res){
 
@@ -32,7 +53,7 @@ router.get('/', async function(req, res){
     }
 }) 
 
-router.post('/editar', async function(req, res){
+router.post('/editar', fileUploader.single('imagen'), async function(req, res){
 
     const id = req.body.id
     const nombre = req.body.nombre
@@ -95,7 +116,7 @@ router.post('/eliminar', async function(req, res){
 })
 
 // crear SERVICIOS
-router.post('/crear_servicio', async function(req, res){
+router.post('/crear_servicio', fileUploader.single('imagen'), async function(req, res){
 
     try {
         const nombre=req.body.nombre
@@ -115,6 +136,16 @@ router.post('/crear_servicio', async function(req, res){
        const params={nombre,descripcion, tipoServicioId}
 
        const resultado = await sqlQuery(qryCrearServicio,params)
+
+       if (req.file){
+        const filename = 'files/images/servicios/'+resultado.insertId+'.jpg'
+        fs.rename(req.file.path, filename, function(error, data) {
+            if (error) {
+                console.log(error);
+                return;
+            }
+        })
+    }
         
        res.status(200).json({exitoso: true})
 

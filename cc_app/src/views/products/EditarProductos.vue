@@ -167,10 +167,7 @@ export default {
       }
 
       data.append('imageType', 'productos')
-
       data.append('imagen', imagen)
-
-      console.log(data.get('imageType'))
 
       axios.post(
         "http://localhost:3000/productos/editar", 

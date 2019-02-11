@@ -65,7 +65,6 @@ export default {
         .get("http://localhost:3000/servicios/")
         .then(response => {
           const data = response.data;
-          console.log(data);
           if (data.exitoso) {
             this.servicios = data.resultados;
           }

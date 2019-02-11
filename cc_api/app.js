@@ -6,6 +6,7 @@ const productos = require('./rutas/productos')
 const usuarios = require('./rutas/usuarios')
 const servicios = require('./rutas/servicios')
 const index = require('./rutas/index')
+const contact = require('./rutas/contact')
 
 app.use(bodyparser.json())
 app.use(bodyparser.urlencoded({
@@ -28,6 +29,7 @@ app.listen(3000, function () {
   app.use('/usuarios',usuarios)
   app.use('/productos',productos)
   app.use('/servicios',servicios)
+  app.use('/contact', contact)
 });
 //
 

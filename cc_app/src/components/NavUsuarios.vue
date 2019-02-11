@@ -67,8 +67,8 @@
               >Cuenta</a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                 <router-link class="dropdown-item" to="/users/login">Iniciar sesión</router-link>
-                <router-link class="dropdown-item" to="/users/registro">Crear cuenta</router-link>
-                <a class="dropdown-item" href="#">Ayuda</a>
+                <!-- <router-link class="dropdown-item" to="/users/registro">Crear cuenta</router-link>
+                <a class="dropdown-item" href="#">Ayuda</a> -->
               </div>
             </li>
 

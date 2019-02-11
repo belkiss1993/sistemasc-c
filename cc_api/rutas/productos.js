@@ -2,14 +2,21 @@ const express = require('express')
 const router = express.Router()
 const {sqlQuery, valorValido} = require('../config/general')
 const multer = require('multer')
+const fs = require('fs')
 
 const storage = multer.diskStorage({
     destination: function(req, file, callback){
         const tipo = req.body.imageType
         callback(null, './files/images/'+tipo)
     },
-    filename: function (req, file, cb) {
-        cb(null, req.body.id + '.jpg')
+    filename: async function (req, file, cb) {
+        let name = req.body.id
+        
+        if(!name){
+            name = Date.now()
+        }
+
+        cb(null, name + '.jpg')
     }
 })
 
@@ -129,7 +136,7 @@ try {
 })
 
 // crear productos
-router.post('/crear_producto', async function(req, res){
+router.post('/crear_producto', fileUploader.single('imagen'), async function(req, res){
     try {
         const nombre= req.body.nombre
         const modelo= req.body.modelo
@@ -146,6 +153,16 @@ router.post('/crear_producto', async function(req, res){
 
        const resultado= await sqlQuery(qryCrearProducto,params)
         
+        if (req.file){
+            const filename = 'files/images/productos/'+resultado.insertId+'.jpg'
+            fs.rename(req.file.path, filename, function(error, data) {
+                if (error) {
+                    console.log(error);
+                    return;
+                }
+            })
+        }
+
        res.status(200).json({exitoso: true})
 
     } catch (error) {
@@ -153,8 +170,6 @@ router.post('/crear_producto', async function(req, res){
         res.status(500).json({exitoso: false})
     }
 })
-
-
 
 // CREAR TIPO DE PRODUCTOS
 router.get('/crear_tipo_producto', async function(req, res){
@@ -181,7 +196,6 @@ router.get('/crear_tipo_producto', async function(req, res){
         res.status(500).json({exitoso: false})
     }
 })
-
 
 router.get('/tipo_segmentos', async function(req, res){
     try {
@@ -223,9 +237,7 @@ router.get('/crear_segmento', async function(req, res){
           console.log(error)
          res.status(500).json({exitoso: false})
    }
-  })
-
-
+})
 
 router.get('/:id', async function(req, res){
 
@@ -258,7 +270,7 @@ router.get('/:id', async function(req, res){
          console.log(error)
         res.status(500).json({exitoso: false})
     }   
-    })
+})
 
 
 router.get('/nombre/:nombre', async function(req, res){

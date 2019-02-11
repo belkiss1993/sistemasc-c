@@ -48,27 +48,31 @@
     <body class="contactanos">
       
       <div class="container">
-        <form action="">
+        <form @submit.prevent="sendContactInfo">
          
           <h2>Contáctese con nosotros</h2>
           <p  class="into" >Agradécenos el interés por contactarse con nosotros, si desea recibir más información
              sobre nuestros productos o servicios, por favor rellene el siguiente formulario y enseguida estaremos respondiendo.
           </p>
           <hr>
+
+          <div class="alert alert-success" role="alert" v-show="messageSent">
+            ¡Gracias por su mensaje! Sistemas C&C se pondrá en contacto con usted.
+          </div>
           <div class="row">
             <div class="col-xs-12 col-ms-6 col-md-6 col-lg-6">
 
-              <input type="text" name="nombre" placeholder="Ingrese su nombre" required>
+              <input type="text" name="nombre" placeholder="Ingrese su nombre" v-model="contact.name" required>
 
-              <input type="text" name="correo" placeholder="Ingrese su correo" required>
+              <input type="text" name="correo" placeholder="Ingrese su correo" v-model="contact.email" required>
 
-              <input type="text" name="telefono" placeholder="Ingrese su telefono" required>
+              <input type="text" name="telefono" placeholder="Ingrese su telefono" v-model="contact.phone" required>
 
-              <input type="text" name="empresa" placeholder="Empresa opcional">
+              <input type="text" name="empresa" placeholder="Empresa opcional" v-model="contact.company">
 
-              <textarea name="mensaje" placeholder="Escriba aqui su mensaje" required></textarea>
+              <textarea name="mensaje" placeholder="Escriba aqui su mensaje" v-model="contact.message" required></textarea>
 
-              <input type="submit" value="Enviar" id="boton">
+              <input type="submit" value="Enviar" id="boton" @submit="sendContactInfo">
 
 
             </div>
@@ -94,12 +98,44 @@
 
 
 <script>
-import modal from "@/components/Modal";
+import axios from 'axios'
+import modal from "@/components/Modal"
 
 export default {
+  data(){
+    return {
+      messageSent: false,
+      contact: {
+        name: '',
+        phone: '',
+        email: '',
+        company: '',
+        message: ''
+      }
+    }
+  },
   methods: {
     abrirModal(id) {
       $("#" + id).modal();
+    },
+
+    sendContactInfo(){
+      const data = this.contact
+      this.messageSent = false
+      axios.post(this.serverUrl+'/contact/send-email', data).then(r=>{
+        if(r.data.exitoso){
+          this.contact.name = ''
+          this.contact.email = ''
+          this.contact.phone = ''
+          this.contact.company = ''
+          this.contact.message = ''
+
+          this.messageSent = true
+        }
+
+      }).catch(err=>{
+        console.log(err)
+      })
     }
   },
 

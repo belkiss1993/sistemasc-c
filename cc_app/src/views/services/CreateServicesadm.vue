@@ -31,6 +31,18 @@
         >{{tipoServicio.descripcion}}</option>
       </select>
     </div>
+    
+    <label>Imagen</label>
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text">Media</span>
+      </div>
+      <div class="custom-file">
+        <input type="file" class="custom-file-input" id="guardarServicioImagen" aria-describedby="inputGroupFileAddon01">
+        <label class="custom-file-label" for="guardarServicioImagen">Choose file</label>
+      </div>
+    </div>
+
     <div class="form-group">
       <label for="exampleFormControlEnlace">Enlace</label>
       <input class="form-control" type="text" id="Enlace" v-model="NuevoServicio.enlace">
@@ -91,12 +103,27 @@ export default {
         this.error_msj = "Campo descripcion es obligatorio";
         return;
       }
+
       this.error_msj = "";
 
-      const data = this.NuevoServicio;
-      axios
-        .post("http://localhost:3000/servicios/crear_servicio", data)
-        .then(response => {
+      const data = new FormData()
+      for(let attr in this.NuevoServicio){
+        data.append(attr, this.NuevoServicio[attr])
+      }
+      const imagen = document.getElementById("guardarServicioImagen").files[0]
+
+      data.append('imageType', 'servicios')
+      data.append('imagen', imagen)
+
+      axios.post(
+        "http://localhost:3000/servicios/crear_servicio",
+        data,
+        {
+          headers: {
+            'accept': 'application/json',
+            'Content-Type': `multipart/form-data; boundary=${data._boundary}`
+          }
+        }).then(response => {
           btnGuardar.disabled = false;
           this.NuevoServicio.nombre = '';
           this.NuevoServicio.descripcion = '';
