@@ -35,11 +35,11 @@
     <label>Imagen</label>
     <div class="input-group mb-3">
       <div class="input-group-prepend">
-        <span class="input-group-text">Media</span>
+        <span class="input-group-text">Archivo</span>
       </div>
       <div class="custom-file">
         <input type="file" class="custom-file-input" id="guardarServicioImagen" aria-describedby="inputGroupFileAddon01">
-        <label class="custom-file-label" for="guardarServicioImagen">Choose file</label>
+        <label class="custom-file-label" for="guardarServicioImagen"></label>
       </div>
     </div>
 

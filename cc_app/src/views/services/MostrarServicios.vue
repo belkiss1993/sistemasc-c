@@ -3,16 +3,18 @@
   
   <div class="row">
     <div v-for="servicio in servicios" :key="servicio.id" class="card col-md-4">
-      <img class="card-img-top" src="@/img/canon1.png" alt="Card image cap">
+      <img class="card-img-top img-fluid product-img" :src="imageURL(servicio.id)" alt="Card image cap">
       <div class="card-body">
         <center><h5 class="card-title">{{servicio.nombre}}</h5></center>
         <p class="card-text">
             {{servicio.descripción_servicio}}
         </p>
-        <p class="card-text" v-if="servicio.enlace">
-            <center>
-                <a :href="servicio.enlace" target="_blank" class="btn btn-light"><u>Ver Más</u></a>
-            </center>
+      </div>
+      <div class="card-footer">
+        <p v-if="servicio.enlace">
+          <center>
+            <a :href="servicio.enlace" target="_blank" class="btn btn-light"><u>Ver Más</u></a>
+          </center>
         </p>
       </div>
     </div>
@@ -47,6 +49,9 @@ export default {
         .catch(error => {
           console.log(error);
         });
+    },
+    imageURL(id){
+      return this.serverUrl+'/files/images/servicios/'+id+'.jpg'
     }
   },
   watch: {
@@ -56,3 +61,12 @@ export default {
   }
 };
 </script>
+<style scoped>
+.product-img{
+  max-height: 200px;
+}
+
+.card-footer{
+  background-color: #fff;
+}
+</style>

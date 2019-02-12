@@ -12,21 +12,20 @@
         <div class="carousel-item"  style="height: 100vh" >
             <img class="d-block w-100" src="../img/orig_221407.jpg" width="380" height="620" alt="First slide">
             <div class="carousel-caption d-none d-md-block">
-                <h5>CANON</h5>
+               
                 <p> </p>
              </div>
         </div>
         <div class="carousel-item " style="height: 100vh">
             <img class="d-block w-100" src="../img/sistemas122.jpg"  width="" height="620" alt="Second slide" >
             <div class="carousel-caption d-none d-md-block">
-                <h5>Sistemas C&C</h5>
-                <p>A tu sevicio</p>
+              
             </div>
         </div>
     <div class="carousel-item active " style="height: 100vh">
       <img class="d-block w-100" src="../img/Plan.png"  width="380" height="620" alt="Third slide">
        <div class="carousel-caption d-none d-md-block">
-        <h5>Hewlett-Packard</h5>
+      
         <p></p>
      </div>
    </div>

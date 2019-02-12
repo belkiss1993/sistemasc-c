@@ -57,11 +57,11 @@
     <label>Imagen</label>
     <div class="input-group mb-3">
       <div class="input-group-prepend">
-        <span class="input-group-text">Media</span>
+        <span class="input-group-text">Archivo</span>
       </div>
       <div class="custom-file">
         <input type="file" class="custom-file-input" id="guardarProductoImagen" aria-describedby="inputGroupFileAddon01">
-        <label class="custom-file-label" for="guardarProductoImagen">Choose file</label>
+        <label class="custom-file-label" for="guardarProductoImagen"></label>
       </div>
     </div>
 
@@ -178,6 +178,8 @@ export default {
           this.Nuevoproducto.nombre = '';
           this.Nuevoproducto.descripcion = '';
           this.Nuevoproducto.modelo = '';
+          this.Nuevoproducto.enlace= '';
+          this.Nuevoproducto.imagen='';
           this.$emit('created')
         })
         .catch(error => {

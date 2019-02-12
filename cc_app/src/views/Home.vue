@@ -68,7 +68,7 @@
             class="btn btn-secondary"
             data-toggle="modal"
             data-target="#mostrar-modal"
-          >Mostrar mas...</button>
+          >Ver más...</button>
           <div
             class="modal fade"
             id="mostrar-modal"
@@ -225,7 +225,7 @@
       <img src="marcas.jpg" class="img-fluid imgcenter" alt srcset>
     </div>
     
-    <center>&#169; 2019 Sistemas C&C Honduras S de RL, Todos los derechos reservados</center>
+    <center>&#169; 2019 Sistemas C&C Honduras. Todos los derechos reservados.</center>
   <p>
 
   </p>

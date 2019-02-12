@@ -3,16 +3,18 @@
   
   <div class="row">
     <div v-for="producto in productos" :key="producto.id" class="card col-md-4">
-      <img class="card-img-top" :src="imageURL(producto.id)" alt="Card image cap">
+      <img class="card-img-top img-fluid product-img"  :src="imageURL(producto.id)" alt="Card image cap" >
       <div class="card-body">
         <center><h5 class="card-title">{{producto.nombre}} {{producto.modelo}}</h5></center>
-        <p class="card-text">
+         <center class="card-text">
             {{producto.descripcion_producto}}
-        </p>
-        <p class="card-text" v-if="producto.enlace">
-            <center>
-                <a :href="producto.enlace" target="_blank" class="btn btn-light"><u>Ver Más</u></a>
-            </center>
+        </center>
+      </div>
+      <div class="card-footer">
+        <p v-if="producto.enlace">
+          <center>
+            <a :href="producto.enlace" target="_blank" class="btn btn-light"><u>Ver Más</u></a>
+          </center>
         </p>
       </div>
     </div>
@@ -60,3 +62,13 @@ export default {
   }
 };
 </script>
+<style scoped>
+.product-img{
+  max-height: 200px;
+}
+
+.card-footer{
+  background-color: #fff;
+}
+</style>
+

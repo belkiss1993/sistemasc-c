@@ -42,13 +42,8 @@
                     <button type="submit" @click.prevent="verifyAccount" class="btn btn-lg btn-primary btn-block btn-signin" ty>Iniciar sesión</button>
                 </div>
             </form>
-            <div class="dropdown-divider"></div>
-             <!-- <a class="dropdown-item" href="#">
-                    ¿Nuevo por aquí? Regístrate</a>
-              <a class="dropdown-item" href="#">
-                    ¿Se te olvidó tu contraseña?</a> -->
 
-             </div>
+          </div>
         
         <div class="col-md-2">
         </div>

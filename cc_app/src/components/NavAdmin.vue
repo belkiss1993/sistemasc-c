@@ -16,8 +16,6 @@
         <!-- <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <router-link class="dropdown-item" to="/adm/createproducts">Crear Productos</router-link>
           <router-link class="dropdown-item" to="/adm/products">Ver lista productos</router-link>
-            
-         
         </div> -->
       </li>
     
@@ -42,8 +40,6 @@
           <router-link class="dropdown-item" to="/adm/usersadm">Ver lista de usuarios</router-link>
         </div> -->
       </li>
-
-
       <li class="nav-item">
         <a class="nav-link" href="#" @click.prevent="logout">Salir</a>
       </li>
