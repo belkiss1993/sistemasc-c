@@ -84,6 +84,23 @@ export default {
         this.error_msj = "La contraseña debe ser mas de 6 caracteres"
         return 
       }
+       if (!this.NuevoUsuario.nombre) {
+        this.error_msj = "Campo nombre es obligatorio";
+        return;
+      }
+      if (!this.NuevoUsuario.sexo) {
+        this.error_msj = "Campo genero es obligatorio";
+        return;
+      }
+       if (!this.NuevoUsuario.telefono) {
+        this.error_msj = "Campo telefono es obligatorio";
+        return;
+      }
+        if (!this.NuevoUsuario.email) {
+        this.error_msj = "Campo correo es obligatorio";
+        return;
+      }
+      
 
       const data=this.NuevoUsuario
       

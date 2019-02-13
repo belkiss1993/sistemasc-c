@@ -115,6 +115,23 @@ export default {
             return
           }
         }
+        if (!this.usuario.nombre) {
+        this.error_msj = "Campo nombre es obligatorio";
+        return;
+      }
+      if (!this.usuario.sexo) {
+        this.error_msj = "Campo genero es obligatorio";
+        return;
+      }
+       if (!this.usuario.telefono) {
+        this.error_msj = "Campo telefono es obligatorio";
+        return;
+      }
+        if (!this.usuario.email) {
+        this.error_msj = "Campo correo es obligatorio";
+        return;
+      }
+      
 
         const data = this.usuario
 

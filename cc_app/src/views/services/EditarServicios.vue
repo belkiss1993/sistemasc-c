@@ -99,11 +99,15 @@ export default {
       }
       
       if (!this.servicio.descripcion) {
-        this.error_msj = "Campo nombre es obligatorio";
+        this.error_msj = "Campo descripcion es obligatorio";
         return;
       }
        if (!this.servicio.tipoServicioId) {
-        this.error_msj = "Campo nombre es obligatorio";
+        this.error_msj = "Campo tipo de servicio es obligatorio";
+        return;
+      }
+        if (!this.servicio.imagen) {
+        this.error_msj = "Campo imagen es obligatorio";
         return;
       }
      
