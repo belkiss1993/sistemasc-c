@@ -34,11 +34,11 @@
 
     <div class="input-group mb-3">
       <div class="input-group-prepend">
-        <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
+        <span class="input-group-text" id="inputGroupFileAddon01">Imagen</span>
       </div>
       <div class="custom-file">
         <input type="file" class="custom-file-input" id="editarServicioImagen" aria-describedby="inputGroupFileAddon01">
-        <label class="custom-file-label" for="editarServicioImagen">Choose file</label>
+        <label class="custom-file-label" for="editarServicioImagen">Reeemplazar imagen</label>
       </div>
     </div>
 

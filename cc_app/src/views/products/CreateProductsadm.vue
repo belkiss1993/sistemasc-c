@@ -54,10 +54,10 @@
       </select>
     </div>
 
-    <label>Imagen</label>
+    
     <div class="input-group mb-3">
       <div class="input-group-prepend">
-        <span class="input-group-text">Archivo</span>
+        <span class="input-group-text">Imagen</span>
       </div>
       <div class="custom-file">
         <input type="file" class="custom-file-input" id="guardarProductoImagen" aria-describedby="inputGroupFileAddon01">

@@ -32,10 +32,10 @@
       </select>
     </div>
     
-    <label>Imagen</label>
+    
     <div class="input-group mb-3">
       <div class="input-group-prepend">
-        <span class="input-group-text">Archivo</span>
+        <span class="input-group-text">Imagen</span>
       </div>
       <div class="custom-file">
         <input type="file" class="custom-file-input" id="guardarServicioImagen" aria-describedby="inputGroupFileAddon01">
@@ -70,6 +70,14 @@ export default {
   },
   created() {
     this.obtenerTipoServicio();
+  },
+   mounted(){
+    $('.custom-file-input').on('change',function(){
+      //get the file name
+      var fileName = $(this).val();
+      //replace the "Choose a file" label
+      $(this).next('.custom-file-label').html(fileName);
+    })
   },
   methods: {
     obtenerTipoServicio() {
@@ -129,6 +137,7 @@ export default {
           this.NuevoServicio.descripcion = '';
           this.NuevoServicio.tipoServicioId= '';
           this.NuevoServicio.enlace= '';
+          this.NuevoServicio.imagen='';
           
           this.$emit('created')
         })

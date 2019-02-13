@@ -11,17 +11,8 @@
         v-model="usuario.nombre"
       >
     </div>
-     <div class="form-group">
-      <label for="exampleInputUser">Apellido de Usuario</label>
-      <input
-        type="text"
-        class="form-control"
-        name="UserLatsname"
-        aria-describedby="UserLastname"
-        placeholder="Apellido"
-        v-model="usuario.apellido"
-      >
-    </div>
+  
+    
     <div class="row">
     <div class="form-group col-md-4">
       <label for="inputGenero">Genero</label>
@@ -29,11 +20,6 @@
         <option value="M">Masculino</option>
         <option value="F">Femenino</option>
       </select>
-    </div>
-    
-    <div class="archivo custom-file form-group col-md-4">
-      <label class="custom-file-label">Seleccionar Archivo</label>
-      <input type="file" class="custom-file-input" name="customFileLang" lang="es">
     </div>
   </div>
 

@@ -1,27 +1,17 @@
 <template>
     <form>
      <div class="form-group">
-      <label for="exampleInputUser">Nombre de Usuario</label>
+      <label for="exampleInputUser">Nombre y apellido</label>
       <input
         type="text"
         class="form-control"
         id="editUserName"
         aria-describedby="UserName"
-        placeholder="Nombre"
+        placeholder="Nombre/Apellido"
         v-model="NuevoUsuario.nombre"
       >
     </div>
-     <div class="form-group">
-      <label for="exampleInputUser">Apellido de Usuario</label>
-      <input
-        type="text"
-        class="form-control"
-        id="editUserLatsname"
-        aria-describedby="UserLastname"
-        placeholder="Apellido"
-        v-model="NuevoUsuario.apellido"
-      >
-    </div>
+
     <div class="row">
     <div class="form-group col-md-4">
       <label for="inputGenero">Genero</label>
@@ -29,11 +19,6 @@
         <option value="M">Masculino</option>
         <option value="F">Femenino</option>
       </select>
-    </div>
-    
-    <div class="archivo custom-file form-group col-md-4">
-      <label class="custom-file-label">Seleccionar Archivo</label>
-      <input type="file" class="custom-file-input" id="customFileLang" lang="es">
     </div>
   </div>
 
@@ -71,8 +56,7 @@
         class="form-control"
         id="UserPassword"
         aria-describedby="UserPassword"
-        placeholder="C
-        ontraeña"
+        placeholder="Contraeña"
         v-model="NuevoUsuario.password" />
        <small id="passwordHelpInline" class="text-muted">Mas de 6 caracteres.</small>
         <div class="alert alert-danger" role="alert" v-show="error_msj.length > 0">{{error_msj}}</div>
@@ -107,8 +91,7 @@ export default {
       .then(response =>{
 
         if(response.data.exitoso){
-          this.NuevoUsuario.nomnbre = ''
-          this.NuevoUsuario.apellido = ''
+          this.NuevoUsuario.nombre = ''
           this.NuevoUsuario.sexo = ''
           this.NuevoUsuario.telefono = ''
           this.NuevoUsuario.direccion = ''

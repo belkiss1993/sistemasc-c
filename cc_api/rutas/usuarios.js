@@ -192,13 +192,13 @@ router.post('/crear_usuario', async function(req, res){
     const email = req.body.email
     const sexo = req.body.sexo
     const password = req.body.password
-    const direccion = req.body.direccion
+    // const direccion = req.body.direccion
     // const ciudad = req.body.ciudad
     // const imagen = req.body.image
     const tipoUsuarioId = 1; //Tipo usuario admin por defectos
 
     
-    if(!nombre || !telefono || !email || !password || !tipoUsuarioId || !direccion){
+    if(!nombre || !telefono || !email || !password || !tipoUsuarioId ){
         return res.status(400).json({exitoso: false, error: 'campos incompletos'})
     }
 
@@ -209,10 +209,10 @@ router.post('/crear_usuario', async function(req, res){
         const passEncripted = encrypt(password)
         //insertar datos
         const qryCrearUsuario = `
-            insert into usuarios (nombre, telefono, email, sexo, password, tipoUsuarioId, direccion)
-                values(:nombre, :telefono, :email, :sexo, :passEncripted, :tipoUsuarioId, :direccion)`
+            insert into usuarios (nombre, telefono, email, sexo, password, tipoUsuarioId)
+                values(:nombre, :telefono, :email, :sexo, :passEncripted, :tipoUsuarioId)`
 
-        const params = {nombre,telefono, email, sexo, tipoUsuarioId, passEncripted, direccion}
+        const params = {nombre, telefono, email, sexo, tipoUsuarioId, passEncripted}
 
         const result = await sqlQuery(qryCrearUsuario, params)
 
