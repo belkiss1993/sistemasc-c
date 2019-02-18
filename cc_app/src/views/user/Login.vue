@@ -80,7 +80,7 @@ export default {
                 password : this.password
             }
 
-            axios.post('http://localhost:3000/usuarios/login', data).then(response =>{
+            axios.post(this.serverUrl+'/usuarios/login', data).then(response =>{
                 const resultado = response.data
 
                 if (resultado.exitoso) {

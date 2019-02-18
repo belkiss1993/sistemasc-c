@@ -17,7 +17,7 @@
              </div>
         </div>
         <div class="carousel-item " style="height: 100vh">
-            <img class="d-block w-100" src="../img/sistemas122.jpg"  width="" height="620" alt="Second slide" >
+            <img class="d-block w-100" src="../img/serieG.jpg"  width="" height="620" alt="Second slide" >
             <div class="carousel-caption d-none d-md-block">
               
             </div>

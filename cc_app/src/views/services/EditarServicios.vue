@@ -43,6 +43,12 @@
     </div>
 
     <div class="form-group">
+      <center>
+        <img :src="imageURL(servicio.id)" class="img-fluid" style="height: 200px">
+      </center>
+    </div>
+
+    <div class="form-group">
       <label for="exampleFormControlEnlace">Enlace</label>
       <input class="form-control" type="text" id="exampleFormControlEnlace" v-model="servicio.enlace">
     </div>
@@ -59,58 +65,58 @@
 import axios from "axios"
 
 export default {
-    props: ['servicio'],
+  props: ['servicio'],
 
-    data(){
-        return {
+  data(){
+      return {
 
-            tipo_servicios: [],
-            error_msj: ''
-        }
+          tipo_servicios: [],
+          error_msj: ''
+      }
+  },
+  created() {
+    this.obtenerTipoServicios();
+  },
+  mounted(){
+    $('.custom-file-input').on('change',function(){
+      //get the file name
+      var fileName = $(this).val();
+      //replace the "Choose a file" label
+      $(this).next('.custom-file-label').html(fileName);
+    })
+  },
+  methods: {
+    obtenerTipoServicios() {
+      axios.get(this.serverUrl+"/servicios/tipo-servicios").then(response => {
+        const data = response.data;
+        this.tipo_servicios = data.tipo_servicios;
+      }).catch(error => {
+        console.log("error de conexion", error);
+      });
     },
-    created() {
-      this.obtenerTipoServicios();
-    },
-    mounted(){
-      $('.custom-file-input').on('change',function(){
-        //get the file name
-        var fileName = $(this).val();
-        //replace the "Choose a file" label
-        $(this).next('.custom-file-label').html(fileName);
-      })
-    },
-    methods: {
-      obtenerTipoServicios() {
-        axios.get("http://localhost:3000/servicios/tipo-servicios").then(response => {
-          const data = response.data;
-          this.tipo_servicios = data.tipo_servicios;
-        }).catch(error => {
-          console.log("error de conexion", error);
-        });
-    },
-    
+  
     editarServicio(){
       const btnGuardar = document.querySelector("#guardar");
-       btnGuardar.disabled = true;
-       
+      btnGuardar.disabled = true;
+      
       if (!this.servicio.nombre) {
         this.error_msj = "Campo nombre es obligatorio";
+        btnGuardar.disabled = false;
         return;
       }
       
       if (!this.servicio.descripcion) {
         this.error_msj = "Campo descripcion es obligatorio";
+        btnGuardar.disabled = false;
         return;
       }
-       if (!this.servicio.tipoServicioId) {
+
+      if (!this.servicio.tipoServicioId) {
         this.error_msj = "Campo tipo de servicio es obligatorio";
+        btnGuardar.disabled = false;
         return;
       }
-        if (!this.servicio.imagen) {
-        this.error_msj = "Campo imagen es obligatorio";
-        return;
-      }
-     
+    
       this.error_msj = "";
 
       const data = new FormData()
@@ -125,7 +131,7 @@ export default {
       data.append('imagen', imagen)
 
       axios.post(
-        "http://localhost:3000/servicios/editar",
+       this.serverUrl+"/servicios/editar",
         data,
         {
           headers: {
@@ -141,7 +147,14 @@ export default {
           btnGuardar.disabled = false;
           console.log(error);
         });
-  
+    },
+
+    imageURL(id){
+      if (!id)
+        return ''
+
+      const rndInt = Math.floor(Math.random() * 101); 
+      return this.serverUrl+'/files/images/servicios/'+id+'.jpg?'+rndInt
     }
 }
     

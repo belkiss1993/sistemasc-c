@@ -14,8 +14,8 @@
       <div class="col">
     <h5>Horarios de Atención</h5>
     <div>
-    <p>LUNES A VIERNES</p>
-    <p>8:00 AM A 5:00 PM</p>
+    <p>LUNES A VIERNES DE 8:00 AM A 5:00 PM</p>
+   
     </div>
   </div>
   </div>

@@ -58,7 +58,7 @@
         class="form-control"
         name="editUserPassword"
         aria-describedby="UserPassword"
-        placeholder="Contraeña"
+        placeholder="Reemplazar contaseña"
         v-model="usuario.password" />
        <small id="passwordHelpInline" class="text-muted">Mas de 6 caracteres.</small>
     </div>
@@ -93,7 +93,7 @@ export default {
     },
     methods: {
       obtenerTipoUsuarios() {
-            axios.get("http://localhost:3000/usuarios/tipo-usuarios").then(response => {
+            axios.get(this.serverUrl+"/usuarios/tipo-usuarios").then(response => {
                     const data = response.data;
                     this.tipo_usuario = data.tipo_usuario;
             })
@@ -135,7 +135,7 @@ export default {
 
         const data = this.usuario
 
-        axios.post('http://localhost:3000/usuarios/editar', data).then(r =>{
+        axios.post(this.serverUrl+'/usuarios/editar', data).then(r =>{
           if(r.data.exitoso){
             this.$emit('editado')
           }

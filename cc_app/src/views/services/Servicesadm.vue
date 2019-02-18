@@ -8,7 +8,10 @@
 
        <modal id="editar-servicio-modal" titulo="Editar Servicio">
              <template slot="contenido">
-                <editarServices @edit="refrescarModal('editar-servicio-modal')" :servicio="servicioSeleccionado" />
+                <editarServices
+                  :key="editarServicioKey"
+                  @edit="refrescarModal('editar-servicio-modal')"
+                  :servicio="servicioSeleccionado" />
              </template>
          </modal>
 
@@ -45,6 +48,7 @@ export default {
   data() {
     return {
       servicios: [],
+      editarServicioKey: 0,
         servicioSeleccionado: {
                 nombre: '',
                 descripcion: '',
@@ -62,7 +66,7 @@ export default {
   methods: {
     obtenerservicios() {
       axios
-        .get("http://localhost:3000/servicios/")
+        .get(this.serverUrl+"/servicios/")
         .then(response => {
           const data = response.data;
           if (data.exitoso) {
@@ -83,7 +87,7 @@ export default {
 
       console.log(id)
 
-      axios.post("http://localhost:3000/servicios/eliminar", {id}).then(response=>{
+      axios.post(this.serverUrl+"/servicios/eliminar", {id}).then(response=>{
           this.obtenerservicios();
 
         }).catch(error => {
@@ -91,6 +95,7 @@ export default {
       })
     },
       abrirEditarModal(servicio){
+          this.editarServicio += 1
           this.servicioSeleccionado.id = servicio.id
           this.servicioSeleccionado.nombre = servicio.nombre
           this.servicioSeleccionado.descripcion = servicio.descripción_servicio
@@ -102,7 +107,7 @@ export default {
         },
           editarServicio(id){
             
-            axios.post("http://localhost:3000/servicios/editar"),{id}.then(response=>{
+            axios.post(this.serverUrl+"/servicios/editar"),{id}.then(response=>{
                 this.obtenerservicios()
             }).catch(error=>{
                 console.log(error)

@@ -1,14 +1,14 @@
 <template>
 <div class="container">
-  
+  <br>
   <div class="row">
     <div v-for="servicio in servicios" :key="servicio.id" class="card col-md-4">
       <img class="card-img-top img-fluid product-img" :src="imageURL(servicio.id)" alt="Card image cap">
       <div class="card-body">
         <center><h5 class="card-title">{{servicio.nombre}}</h5></center>
-        <p class="card-text">
+        <center ALIGN="justify" class="card-text">
             {{servicio.descripción_servicio}}
-        </p>
+        </center>
       </div>
       <div class="card-footer">
         <p v-if="servicio.enlace">
@@ -41,7 +41,7 @@ export default {
   methods: {
     getServicios() {
       axios
-        .get("http://localhost:3000/servicios/explorar/" + this.tipoServicio)
+        .get(this.serverUrl+"/servicios/explorar/" + this.tipoServicio)
         .then(response => {
           const data = response.data;
           if (data.exitoso) this.servicios = data.servicios;

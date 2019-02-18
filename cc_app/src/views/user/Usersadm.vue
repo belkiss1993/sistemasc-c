@@ -68,7 +68,7 @@ export default {
   methods: {
     obtenerusuarios() {
       axios
-        .get("http://localhost:3000/usuarios/")
+        .get(this.serverUrl+"/usuarios/")
         .then(response => {
           const data = response.data;
           if (data.exitoso) {
@@ -86,7 +86,7 @@ export default {
         return;
       }
       axios
-        .post("http://localhost:3000/usuarios/eliminar", {id})
+        .post(this.serverUrl+"/usuarios/eliminar", {id})
         .then(response => {
           this.obtenerusuarios();
         })

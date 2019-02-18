@@ -95,9 +95,9 @@ export default new Router({
     path:'/adm/usersadm',
     name:'useradm',
     component:Usersadm,
-    // meta: {
-    //   requiresAuth: true
-    // }
+    meta: {
+      requiresAuth: true
+    }
     },
     {
     path:'/adm/createusers',

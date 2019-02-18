@@ -28,7 +28,12 @@ router.beforeEach( (to, from, next)=>{
       let permissionGranted = false
       const currentRoute = to.matched[0]
 
-      permissionGranted = permisos.some( permiso=> currentRoute.meta.permissionRequired === permiso)
+      permissionGranted = permisos.some( permiso=> {
+        if (!currentRoute.meta.permissionRequired)
+          return true
+        
+        return currentRoute.meta.permissionRequired === permiso
+      })
 
       if(!permissionGranted)
         alert('No cuenta con los permisos necesarios')
@@ -54,7 +59,8 @@ router.beforeEach( (to, from, next)=>{
 Vue.mixin({
   data(){
     return{
-      serverUrl:'http://localhost:3000'
+      serverUrl: 'http://localhost:3000'
+      // serverUrl:'https://sitemacc-honduras.herokuapp.com'
     }
   }
 })

@@ -82,7 +82,7 @@ export default {
   methods: {
     obtenerTipoServicio() {
       axios
-        .get("http://localhost:3000/servicios/tipo-servicios")
+        .get(this.serverUrl+"/servicios/tipo-servicios")
         .then(response => {
           const data = response.data;
           this.tipo_servicios = data.tipo_servicios;
@@ -98,17 +98,20 @@ export default {
 
       if (!this.NuevoServicio.nombre) {
         this.error_msj = "Campo nombre es obligatorio";
+         btnGuardar.disabled = false;
         return;
       }
 
       if (!this.NuevoServicio.descripcion) {
         this.error_msj = "Campo descripcion es obligatorio";
+          btnGuardar.disabled = false;
         return;
       }
       this.error_msj = "";
 
        if (!this.NuevoServicio.tipoServicioId) {
         this.error_msj = "Campo descripcion es obligatorio";
+          btnGuardar.disabled = false;
         return;
       }
 
@@ -124,7 +127,7 @@ export default {
       data.append('imagen', imagen)
 
       axios.post(
-        "http://localhost:3000/servicios/crear_servicio",
+        this.serverUrl+"/servicios/crear_servicio",
         data,
         {
           headers: {

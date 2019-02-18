@@ -118,7 +118,7 @@ export default {
   },
 
   created(){
-    axios.get('http://localhost:3000/paises').then(response=>{
+    axios.get(this.serverUrl+'/paises').then(response=>{
 
       const data = response.data
       this.paises = data
@@ -136,7 +136,7 @@ export default {
         return 
       }
       const data=this.NuevoUsuario
-      axios.post('http://localhost:3000/usuarios/crear_usuario', data).then(response =>{
+      axios.post(this.serverUrl+'/usuarios/crear_usuario', data).then(response =>{
           this.$router.push('/users/login')
       }).catch(error=> {
         console.log(error)
@@ -147,7 +147,7 @@ export default {
 
   watch: {
     paisSeleccionado: function(nuevoValor){
-      axios.get('http://localhost:3000/pais-depts/'+nuevoValor).then(response=> {
+      axios.get(this.serverUrl+'/pais-depts/'+nuevoValor).then(response=> {
         const data = response.data
 
         if(data.exitoso){
@@ -163,7 +163,7 @@ export default {
 
     //aqui empezar el departamento con la sintaxis de pais seleccionado
     departamentoSeleccionado: function(nuevoValor){
-      axios.get('http://localhost:3000/departamentos-ciudades/'+nuevoValor).then(response=> {
+      axios.get(this.serverUrl+'/departamentos-ciudades/'+nuevoValor).then(response=> {
         const data = response.data
         if(data.exitoso){
           this.ciudades= data.result 

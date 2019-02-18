@@ -1,12 +1,12 @@
 <template>
 <div class="container">
-  
+   <br>
   <div class="row">
     <div v-for="producto in productos" :key="producto.id" class="card col-md-4">
       <img class="card-img-top img-fluid product-img"  :src="imageURL(producto.id)" alt="Card image cap" >
       <div class="card-body">
         <center><h5 class="card-title">{{producto.nombre}} {{producto.modelo}}</h5></center>
-         <center class="card-text">
+         <center ALIGN="justify" class="card-text">
             {{producto.descripcion_producto}}
         </center>
       </div>
@@ -41,7 +41,7 @@ export default {
   methods: {
     getProductos() {
       axios
-        .get("http://localhost:3000/productos/explorar/" + this.tipoSegmento)
+        .get(this.serverUrl+"/productos/explorar/" + this.tipoSegmento)
         .then(response => {
           const data = response.data;
           if (data.exitoso) this.productos = data.productos;

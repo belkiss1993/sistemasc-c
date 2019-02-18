@@ -9,7 +9,10 @@
 
          <modal id="editar-producto-modal" titulo="Editar Producto">
              <template slot="contenido">
-                <editarProducts @edit="refrescarModal('editar-producto-modal')" :producto="productoSeleccionado" />
+                <editarProducts 
+                :key="editarProductosKey"
+                @edit="refrescarModal('editar-producto-modal')" 
+                :producto="productoSeleccionado" />
              </template>
          </modal>
 
@@ -44,6 +47,7 @@ const dataTable = () => import("@/components/dataTable");
 export default {
     data(){
         return{
+            editarProductosKey: 0,
             productos: [],
             productoSeleccionado: {
                 id: '',
@@ -63,7 +67,7 @@ export default {
 
     methods:{
         obtenerproductos(){
-            axios.get('http://localhost:3000/productos/').
+            axios.get(this.serverUrl+'/productos/').
             then(response=>{
                 const data = response.data
                 if(data.exitoso){
@@ -81,7 +85,7 @@ export default {
                 return
             }
 
-            axios.post("http://localhost:3000/productos/eliminar",{id}).then(response=>{
+            axios.post(this.serverUrl+"/productos/eliminar",{id}).then(response=>{
                 this.obtenerproductos()
             }).catch(error=>{
                 console.log(error)
@@ -89,6 +93,7 @@ export default {
         },
 
         abrirEditarModal(producto){
+            this.editarProductosKey += 1
             this.productoSeleccionado.id = producto.id
             this.productoSeleccionado.nombre = producto.nombre
             this.productoSeleccionado.descripcion = producto.descripcion_producto
@@ -102,7 +107,7 @@ export default {
 
         editarProducto(id){
             
-            axios.post("http://localhost:3000/productos/editar"),{id}.then(response=>{
+            axios.post(this.serverUrl+"/productos/editar"),{id}.then(response=>{
                 this.obtenerproductos()
             }).catch(error=>{
                 console.log(error)

@@ -89,6 +89,11 @@ export default {
       tipo_segmentos: [],
       tipoSegmentoSeleccionado: "",
       Nuevoproducto: {
+        nombre: '',
+        descripcion: '',
+        modelo: '',
+        tipoProductoId: '',
+        segmentoId: '',
         enlace: ''
       },
       error_msj: ""
@@ -113,7 +118,7 @@ export default {
   methods: {
     obtenerTipoProductos() {
       axios
-        .get("http://localhost:3000/productos/tipo_producto")
+        .get(this.serverUrl+"/productos/tipo_producto")
         .then(response => {
           const data = response.data;
           this.tipo_producto = data.tipo_producto;
@@ -125,7 +130,7 @@ export default {
 
     obtenerTipoSegmentos() {
       axios
-        .get("http://localhost:3000/productos/tipo_segmentos")
+        .get(this.serverUrl+"/productos/tipo_segmentos")
         .then(response => {
           const data = response.data;
           this.tipo_segmentos = data.tipo_segmentos;
@@ -143,18 +148,21 @@ export default {
 
       if (!this.Nuevoproducto.nombre) {
         this.error_msj = "Campo nombre es obligatorio";
+         btnGuardar.disabled = false;
         return;
       }
-      if (!this.Nuevoproducto.descripcion) {
+      if (this.Nuevoproducto.descripcion == '') {
         this.error_msj = "Campo descripcion es obligatorio";
+        btnGuardar.disabled = false;
         return;
       }
-        if (!this.Nuevoproducto.modelo) {
+        if (this.Nuevoproducto.modelo == '') {
           this.error_msj = "Campo modelo es obligatorio";
+          btnGuardar.disabled = false;
         return;
       }
+
       this.error_msj=""
-    
       const data = new FormData()
       
       for(let attr in this.Nuevoproducto){
@@ -166,7 +174,7 @@ export default {
       data.append('imagen', imagen)
 
       axios.post(
-        "http://localhost:3000/productos/crear_producto",
+        this.serverUrl+"/productos/crear_producto",
         data,
         {
           headers: {

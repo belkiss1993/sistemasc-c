@@ -104,7 +104,7 @@ export default {
 
       const data=this.NuevoUsuario
       
-      axios.post('http://localhost:3000/usuarios/crear_usuario', data)
+      axios.post(this.serverUrl+'/usuarios/crear_usuario', data)
       .then(response =>{
 
         if(response.data.exitoso){
